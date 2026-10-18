@@ -145,9 +145,24 @@ local BarBack=New("Frame",{Size=UDim2.new(0,300,0,5),Position=UDim2.new(.5,-150,
 local Bar=New("Frame",{Size=UDim2.new(0,0,1,0),BackgroundColor3=Accent,ZIndex=202},BarBack); Corner(Bar,5)
 local LoadStatus=New("TextLabel",{Size=UDim2.new(1,0,0,25),Position=UDim2.new(0,0,.58,0),BackgroundTransparency=1,Text="Starting...",TextColor3=Color3.fromRGB(145,145,155),TextSize=12,Font=Enum.Font.Gotham,ZIndex=201},Loading)
 
-local Main=New("Frame",{Name="Main",AnchorPoint=Vector2.new(.5,.5),Position=UDim2.fromScale(.5,.5),Size=UDim2.new(0,720,0,520),BackgroundColor3=Color3.fromRGB(7,7,10),Visible=false},Gui)
+local Main=New("Frame",{Name="Main",AnchorPoint=Vector2.new(.5,.5),Position=UDim2.fromScale(.5,.5),Size=UDim2.fromOffset(570,360),BackgroundColor3=Color3.fromRGB(7,7,10),Visible=false},Gui)
 Corner(Main,16); Stroke(Main,Color3.fromRGB(45,45,55),.15)
-New("UISizeConstraint",{MinSize=Vector2.new(320,330),MaxSize=Vector2.new(900,620)},Main)
+New("UISizeConstraint",{MinSize=Vector2.new(300,300),MaxSize=Vector2.new(570,420)},Main)
+
+-- Compact window: keep the UI centered and inside the viewport on phones and tablets.
+local function UpdateWindowSize()
+ local camera=workspace.CurrentCamera
+ if not camera then return end
+ local viewport=camera.ViewportSize
+ local width=math.max(300,math.min(570,viewport.X-24))
+ local height=math.max(300,math.min(420,viewport.Y-40,360))
+ Main.Size=UDim2.fromOffset(width,height)
+end
+UpdateWindowSize()
+if workspace.CurrentCamera then workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(UpdateWindowSize) end
+workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(function()
+ if workspace.CurrentCamera then workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(UpdateWindowSize); UpdateWindowSize() end
+end)
 local Header=New("Frame",{Size=UDim2.new(1,0,0,58),BackgroundColor3=Color3.fromRGB(10,10,14)},Main); Corner(Header,16)
 New("TextLabel",{Size=UDim2.new(0,320,1,0),Position=UDim2.fromOffset(18,0),BackgroundTransparency=1,Text="NOXI'S HUB  •  1.3.0",TextColor3=Color3.fromRGB(240,240,245),TextSize=17,Font=Enum.Font.GothamBold,TextXAlignment=Enum.TextXAlignment.Left},Header)
 New("TextLabel",{Size=UDim2.new(0,190,1,0),Position=UDim2.new(1,-245,0,0),BackgroundTransparency=1,Text=IsMainDeveloper and "👑 NOXI  •  DEV" or "DEVELOPER EDITION",TextColor3=Accent,TextSize=11,Font=Enum.Font.GothamBold,TextXAlignment=Enum.TextXAlignment.Right},Header)
