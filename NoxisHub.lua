@@ -138,12 +138,12 @@ end
 -- GUI CORE
 --========================================================
 
-local Loading=New("Frame",{Size=UDim2.fromScale(1,1),BackgroundColor3=Color3.fromRGB(2,2,4),ZIndex=200},Gui)
-local LoadTitle=New("TextLabel",{Size=UDim2.new(1,0,0,55),Position=UDim2.new(0,0,.40,0),BackgroundTransparency=1,Text="NOXI'S HUB",TextColor3=Accent,TextSize=34,Font=Enum.Font.GothamBlack,ZIndex=201},Loading)
-local LoadSub=New("TextLabel",{Size=UDim2.new(1,0,0,30),Position=UDim2.new(0,0,.49,0),BackgroundTransparency=1,Text=VERSION.."  •  PERFORMANCE & CONFIG",TextColor3=Color3.fromRGB(180,180,190),TextSize=13,Font=Enum.Font.GothamMedium,ZIndex=201},Loading)
-local BarBack=New("Frame",{Size=UDim2.new(0,300,0,5),Position=UDim2.new(.5,-150,.55,0),BackgroundColor3=Color3.fromRGB(25,25,30),ZIndex=201},Loading); Corner(BarBack,5)
+local Loading=New("Frame",{Name="Loading",AnchorPoint=Vector2.new(.5,.5),Position=UDim2.fromScale(.5,.5),Size=UDim2.fromOffset(300,150),BackgroundColor3=Color3.fromRGB(2,2,4),ZIndex=200,Visible=false},Gui); Corner(Loading,14); Stroke(Loading,Accent,.2)
+local LoadTitle=New("TextLabel",{Size=UDim2.new(1,-12,0,35),Position=UDim2.new(0,6,0,12),BackgroundTransparency=1,Text="NOXI'S HUB",TextColor3=Accent,TextSize=24,Font=Enum.Font.GothamBlack,ZIndex=201},Loading)
+local LoadSub=New("TextLabel",{Size=UDim2.new(1,-12,0,22),Position=UDim2.new(0,6,0,48),BackgroundTransparency=1,Text=VERSION.." • PERFORMANCE",TextColor3=Color3.fromRGB(180,180,190),TextSize=11,Font=Enum.Font.GothamMedium,ZIndex=201},Loading)
+local BarBack=New("Frame",{Size=UDim2.new(1,-36,0,5),Position=UDim2.new(0,18,0,82),BackgroundColor3=Color3.fromRGB(25,25,30),ZIndex=201},Loading); Corner(BarBack,5)
 local Bar=New("Frame",{Size=UDim2.new(0,0,1,0),BackgroundColor3=Accent,ZIndex=202},BarBack); Corner(Bar,5)
-local LoadStatus=New("TextLabel",{Size=UDim2.new(1,0,0,25),Position=UDim2.new(0,0,.58,0),BackgroundTransparency=1,Text="Starting...",TextColor3=Color3.fromRGB(145,145,155),TextSize=12,Font=Enum.Font.Gotham,ZIndex=201},Loading)
+local LoadStatus=New("TextLabel",{Size=UDim2.new(1,-20,0,22),Position=UDim2.new(0,10,0,96),BackgroundTransparency=1,Text="Starting...",TextColor3=Color3.fromRGB(145,145,155),TextSize=10,Font=Enum.Font.Gotham,ZIndex=201},Loading)
 
 local Main=New("Frame",{Name="Main",AnchorPoint=Vector2.new(.5,.5),Position=UDim2.fromScale(.5,.5),Size=UDim2.fromOffset(570,360),BackgroundColor3=Color3.fromRGB(7,7,10),Visible=false},Gui)
 Corner(Main,16); Stroke(Main,Color3.fromRGB(45,45,55),.15)
@@ -164,9 +164,9 @@ workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(function()
  if workspace.CurrentCamera then workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(UpdateWindowSize); UpdateWindowSize() end
 end)
 local Header=New("Frame",{Size=UDim2.new(1,0,0,58),BackgroundColor3=Color3.fromRGB(10,10,14)},Main); Corner(Header,16)
-New("TextLabel",{Size=UDim2.new(0,320,1,0),Position=UDim2.fromOffset(18,0),BackgroundTransparency=1,Text="NOXI'S HUB  •  1.3.0",TextColor3=Color3.fromRGB(240,240,245),TextSize=17,Font=Enum.Font.GothamBold,TextXAlignment=Enum.TextXAlignment.Left},Header)
+New("TextLabel",{Size=UDim2.new(1,-112,1,0),Position=UDim2.fromOffset(12,0),BackgroundTransparency=1,Text="NOXI'S HUB  •  1.7",TextColor3=Color3.fromRGB(240,240,245),TextSize=14,TextTruncate=Enum.TextTruncate.AtEnd,Font=Enum.Font.GothamBold,TextXAlignment=Enum.TextXAlignment.Left},Header)
 New("TextLabel",{Size=UDim2.new(0,190,1,0),Position=UDim2.new(1,-245,0,0),BackgroundTransparency=1,Text=IsMainDeveloper and "👑 NOXI  •  DEV" or "DEVELOPER EDITION",TextColor3=Accent,TextSize=11,Font=Enum.Font.GothamBold,TextXAlignment=Enum.TextXAlignment.Right},Header)
-local Min=New("TextButton",{Size=UDim2.fromOffset(38,32),Position=UDim2.new(1,-45,0,13),BackgroundColor3=Color3.fromRGB(20,20,25),Text="—",TextColor3=Color3.fromRGB(220,220,225),TextSize=17,Font=Enum.Font.GothamBold,AutoButtonColor=false},Header); Corner(Min,9)
+local Min=New("TextButton",{Size=UDim2.fromOffset(42,38),Position=UDim2.new(1,-48,0,10),BackgroundColor3=Color3.fromRGB(20,20,25),Text="—",TextColor3=Color3.fromRGB(220,220,225),TextSize=20,Font=Enum.Font.GothamBold,AutoButtonColor=false,Active=true,ZIndex=10},Header); Corner(Min,9)
 local Body=New("Frame",{Size=UDim2.new(1,-18,1,-68),Position=UDim2.fromOffset(9,62),BackgroundTransparency=1},Main)
 local Sidebar=New("ScrollingFrame",{Size=UDim2.new(0,150,1,0),BackgroundColor3=Color3.fromRGB(10,10,14),BorderSizePixel=0,CanvasSize=UDim2.new(),AutomaticCanvasSize=Enum.AutomaticSize.Y,ScrollingDirection=Enum.ScrollingDirection.Y,ScrollBarThickness=3,Active=true},Body); Corner(Sidebar,12); Padding(Sidebar,8)
 New("UIListLayout",{Padding=UDim.new(0,5),SortOrder=Enum.SortOrder.LayoutOrder},Sidebar)
@@ -351,16 +351,10 @@ UserInputService.InputChanged:Connect(function(input)
 end)
 
 OpenPage("Dashboard")
-task.spawn(function()
-	local steps={"Initializing core","Loading Dashboard 2.0","Preparing Performance Center","Initializing Music Player","Preparing JSON Config Manager","Preparing diagnostics","Finalizing interface"}
-	for i,s in ipairs(steps) do
-		LoadStatus.Text=s
-		TweenService:Create(Bar,TweenInfo.new(.22),{Size=UDim2.new(i/#steps,0,1,0)}):Play()
-		task.wait(.23)
-	end
-	Main.Visible=true; OpenPage("Dashboard"); task.wait(.25)
-	TweenService:Create(Loading,TweenInfo.new(.35),{BackgroundTransparency=1}):Play(); task.wait(.4); Loading.Visible=false
-	Log("NOXI'S HUB 1.3.0 online"); Notify("NOXI'S HUB 1.3.0 ready")
-end)
+-- Compact UI appears immediately; no full-screen loading cover.
+Main.Visible=true
+Loading.Visible=false
+Log("NOXI HUB ready")
+Notify("NOXI HUB ready")
 
 print("[NOXI'S HUB] 1.3.0 loaded | NOXI / "..DEVELOPER_USERNAME.." ("..DEVELOPER_DISPLAY..")")
