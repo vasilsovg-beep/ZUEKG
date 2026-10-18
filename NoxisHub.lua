@@ -145,8 +145,8 @@ local BarBack=New("Frame",{Size=UDim2.new(1,-36,0,5),Position=UDim2.new(0,18,0,8
 local Bar=New("Frame",{Size=UDim2.new(0,0,1,0),BackgroundColor3=Accent,ZIndex=202},BarBack); Corner(Bar,5)
 local LoadStatus=New("TextLabel",{Size=UDim2.new(1,-20,0,22),Position=UDim2.new(0,10,0,96),BackgroundTransparency=1,Text="Starting...",TextColor3=Color3.fromRGB(145,145,155),TextSize=10,Font=Enum.Font.Gotham,ZIndex=201},Loading)
 
-local Main=New("Frame",{Name="Main",AnchorPoint=Vector2.new(.5,.5),Position=UDim2.fromScale(.5,.5),Size=UDim2.fromOffset(570,360),BackgroundColor3=Color3.fromRGB(10,8,18),Visible=false},Gui)
-Corner(Main,18); Stroke(Main,Color3.fromRGB(105,58,165),.12); New("UIGradient",{Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(15,10,27)),ColorSequenceKeypoint.new(1,Color3.fromRGB(7,8,14))}),Rotation=35},Main)
+local Main=New("Frame",{Name="Main",AnchorPoint=Vector2.new(.5,.5),Position=UDim2.fromScale(.5,.5),Size=UDim2.fromOffset(570,360),BackgroundColor3=Color3.fromRGB(8,10,15),Visible=false,ClipsDescendants=true},Gui)
+Corner(Main,14); Stroke(Main,Color3.fromRGB(50,220,190),.18); New("UIGradient",{Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(13,24,31)),ColorSequenceKeypoint.new(.52,Color3.fromRGB(9,13,21)),ColorSequenceKeypoint.new(1,Color3.fromRGB(17,10,28))}),Rotation=28},Main)
 New("UISizeConstraint",{MinSize=Vector2.new(300,300),MaxSize=Vector2.new(570,420)},Main)
 
 -- Compact window: keep the UI centered and inside the viewport on phones and tablets.
@@ -165,14 +165,15 @@ if workspace.CurrentCamera then workspace.CurrentCamera:GetPropertyChangedSignal
 workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(function()
  if workspace.CurrentCamera then workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(UpdateWindowSize); UpdateWindowSize() end
 end)
-local Header=New("Frame",{Size=UDim2.new(1,0,0,58),BackgroundColor3=Color3.fromRGB(20,12,34)},Main); Corner(Header,16); New("UIGradient",{Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(34,17,54)),ColorSequenceKeypoint.new(1,Color3.fromRGB(11,12,22))}),Rotation=0},Header)
-New("TextLabel",{Size=UDim2.new(1,-112,1,0),Position=UDim2.fromOffset(12,0),BackgroundTransparency=1,Text="NOXI'S HUB  •  1.7.0",TextColor3=Color3.fromRGB(240,240,245),TextSize=14,TextTruncate=Enum.TextTruncate.AtEnd,Font=Enum.Font.GothamBold,TextXAlignment=Enum.TextXAlignment.Left},Header)
-New("TextLabel",{Size=UDim2.new(0,190,1,0),Position=UDim2.new(1,-245,0,0),BackgroundTransparency=1,Text=IsMainDeveloper and "👑 NOXI  •  DEV" or "DEVELOPER EDITION",TextColor3=Accent,TextSize=11,Font=Enum.Font.GothamBold,TextXAlignment=Enum.TextXAlignment.Right},Header)
-local Min=New("TextButton",{Size=UDim2.fromOffset(42,38),Position=UDim2.new(1,-48,0,10),BackgroundColor3=Color3.fromRGB(20,20,25),Text="—",TextColor3=Color3.fromRGB(220,220,225),TextSize=20,Font=Enum.Font.GothamBold,AutoButtonColor=false,Active=true,ZIndex=10},Header); Corner(Min,9)
-local Body=New("Frame",{Size=UDim2.new(1,-18,1,-68),Position=UDim2.fromOffset(9,62),BackgroundTransparency=1},Main)
-local Sidebar=New("ScrollingFrame",{Size=UDim2.new(0,150,1,0),BackgroundColor3=Color3.fromRGB(14,11,23),BorderSizePixel=0,CanvasSize=UDim2.new(),AutomaticCanvasSize=Enum.AutomaticSize.Y,ScrollingDirection=Enum.ScrollingDirection.Y,ScrollBarThickness=3,Active=true},Body); Corner(Sidebar,12); Padding(Sidebar,6)
+local Header=New("Frame",{Size=UDim2.new(1,0,0,54),BackgroundColor3=Color3.fromRGB(10,18,25)},Main); Corner(Header,14); New("UIGradient",{Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(14,43,48)),ColorSequenceKeypoint.new(.65,Color3.fromRGB(12,20,31)),ColorSequenceKeypoint.new(1,Color3.fromRGB(28,15,39))}),Rotation=0},Header)
+New("Frame",{Size=UDim2.new(0,4,1,-16),Position=UDim2.fromOffset(10,8),BackgroundColor3=Color3.fromRGB(65,245,205),BorderSizePixel=0},Header)
+New("TextLabel",{Size=UDim2.new(1,-115,0,25),Position=UDim2.fromOffset(23,5),BackgroundTransparency=1,Text="NOXI'S HUB",TextColor3=Color3.fromRGB(244,250,255),TextSize=16,TextTruncate=Enum.TextTruncate.AtEnd,Font=Enum.Font.GothamBlack,TextXAlignment=Enum.TextXAlignment.Left},Header)
+New("TextLabel",{Size=UDim2.new(1,-115,0,16),Position=UDim2.fromOffset(24,30),BackgroundTransparency=1,Text="SYSTEM CONSOLE  /  1.7.0",TextColor3=Color3.fromRGB(90,224,200),TextSize=9,Font=Enum.Font.Code,TextXAlignment=Enum.TextXAlignment.Left},Header)
+local Min=New("TextButton",{Size=UDim2.fromOffset(34,32),Position=UDim2.new(1,-42,0,11),BackgroundColor3=Color3.fromRGB(22,30,39),Text="—",TextColor3=Color3.fromRGB(220,240,245),TextSize=20,Font=Enum.Font.GothamBold,AutoButtonColor=false,Active=true,ZIndex=10},Header); Corner(Min,8); Stroke(Min,Color3.fromRGB(65,245,205),.55)
+local Body=New("Frame",{Size=UDim2.new(1,-20,1,-66),Position=UDim2.fromOffset(10,60),BackgroundTransparency=1},Main)
+local Sidebar=New("ScrollingFrame",{Size=UDim2.new(0,116,1,0),BackgroundColor3=Color3.fromRGB(11,17,25),BorderSizePixel=0,CanvasSize=UDim2.new(),AutomaticCanvasSize=Enum.AutomaticSize.Y,ScrollingDirection=Enum.ScrollingDirection.Y,ScrollBarThickness=2,Active=true},Body); Corner(Sidebar,10); Padding(Sidebar,5)
 local SidebarLayout=New("UIListLayout",{Padding=UDim.new(0,5),SortOrder=Enum.SortOrder.LayoutOrder},Sidebar)
-local Content=New("ScrollingFrame",{Size=UDim2.new(1,-160,1,0),Position=UDim2.fromOffset(160,0),BackgroundTransparency=1,BorderSizePixel=0,CanvasSize=UDim2.new(),AutomaticCanvasSize=Enum.AutomaticSize.Y,ScrollingDirection=Enum.ScrollingDirection.Y,ScrollBarThickness=4,Active=true},Body); Padding(Content,4)
+local Content=New("ScrollingFrame",{Size=UDim2.new(1,-126,1,0),Position=UDim2.fromOffset(126,0),BackgroundTransparency=1,BorderSizePixel=0,CanvasSize=UDim2.new(),AutomaticCanvasSize=Enum.AutomaticSize.Y,ScrollingDirection=Enum.ScrollingDirection.Y,ScrollBarThickness=3,Active=true},Body); Padding(Content,4)
 local PageHolder=New("Frame",{Size=UDim2.new(1,0,0,0),AutomaticSize=Enum.AutomaticSize.Y,BackgroundTransparency=1},Content); New("UIListLayout",{Padding=UDim.new(0,10),SortOrder=Enum.SortOrder.LayoutOrder},PageHolder)
 NotificationHolder=New("Frame",{Size=UDim2.new(0,250,0,0),AutomaticSize=Enum.AutomaticSize.Y,Position=UDim2.new(1,-265,0,68),BackgroundTransparency=1,ZIndex=100},Gui); New("UIListLayout",{Padding=UDim.new(0,6),HorizontalAlignment=Enum.HorizontalAlignment.Right},NotificationHolder)
 
@@ -187,13 +188,13 @@ local function Title(parent,title,sub)
 	New("TextLabel",{Size=UDim2.new(1,0,0,20),Position=UDim2.fromOffset(0,32),BackgroundTransparency=1,Text=sub or "",TextColor3=Color3.fromRGB(130,130,140),TextSize=11,Font=Enum.Font.Gotham,TextXAlignment=Enum.TextXAlignment.Left},f)
 end
 local function Card(parent,h)
-	local f=New("Frame",{Size=UDim2.new(1,0,0,h or 100),BackgroundColor3=Color3.fromRGB(16,13,25)},parent); Corner(f,14); Stroke(f,Color3.fromRGB(85,54,120),.32); New("UIGradient",{Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(23,17,36)),ColorSequenceKeypoint.new(1,Color3.fromRGB(12,12,20))}),Rotation=90},f); Padding(f,12); return f
+	local f=New("Frame",{Size=UDim2.new(1,0,0,h or 100),BackgroundColor3=Color3.fromRGB(13,21,29)},parent); Corner(f,11); Stroke(f,Color3.fromRGB(54,100,111),.42); New("UIGradient",{Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(18,31,40)),ColorSequenceKeypoint.new(1,Color3.fromRGB(11,15,23))}),Rotation=90},f); Padding(f,12); return f
 end
 local function Label(parent,text,h,color)
 	return New("TextLabel",{Size=UDim2.new(1,0,0,h or 25),BackgroundTransparency=1,Text=text,TextColor3=color or Color3.fromRGB(215,215,225),TextSize=13,Font=Enum.Font.GothamMedium,TextXAlignment=Enum.TextXAlignment.Left,TextYAlignment=Enum.TextYAlignment.Center},parent)
 end
 local function Button(parent,text,callback,h)
-	local b=New("TextButton",{Size=UDim2.new(1,0,0,h or 38),BackgroundColor3=Color3.fromRGB(29,21,43),Text=text,TextColor3=Color3.fromRGB(239,232,250),TextSize=12,Font=Enum.Font.GothamBold,AutoButtonColor=false},parent); Corner(b,10); Stroke(b,Color3.fromRGB(105,69,142),.42); New("UIGradient",{Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(36,25,52)),ColorSequenceKeypoint.new(1,Color3.fromRGB(20,18,31))}),Rotation=90},b); b.Activated:Connect(function() pcall(callback) end); return b
+	local b=New("TextButton",{Size=UDim2.new(1,0,0,h or 38),BackgroundColor3=Color3.fromRGB(18,30,37),Text=text,TextColor3=Color3.fromRGB(222,244,245),TextSize=12,Font=Enum.Font.GothamBold,AutoButtonColor=false},parent); Corner(b,8); Stroke(b,Color3.fromRGB(57,117,126),.48); b.Activated:Connect(function() pcall(callback) end); return b
 end
 local function Toggle(parent,text,default,callback)
 	local enabled=default
@@ -206,22 +207,33 @@ end
 -- PAGES
 --========================================================
 
-local Dashboard=NewPage("Dashboard"); Title(Dashboard,"Dashboard 3.0","Live developer overview")
-local Greeting=Label(Dashboard,"",28,Accent)
-local SystemCard=Card(Dashboard,120); Label(SystemCard,"SYSTEM STATUS",20,Accent); local SystemInfo=Label(SystemCard,"Loading...",70); SystemInfo.Position=UDim2.fromOffset(12,35)
-local ActivityCard=Card(Dashboard,170); Label(ActivityCard,"LIVE ACTIVITY",20,Accent); local ActivityText=Label(ActivityCard,"No events yet.",125,Color3.fromRGB(150,150,160)); ActivityText.Position=UDim2.fromOffset(12,35)
-local QuickCard=Card(Dashboard,95); Label(QuickCard,"QUICK ACTIONS",20,Accent)
-local QB2=Button(QuickCard,"⚡  OPEN PERFORMANCE CENTER",function() OpenPage("Performance") end); QB2.Position=UDim2.new(0,0,0,38); QB2.Size=UDim2.new(1,0,0,38)
+local Dashboard=NewPage("Dashboard"); Title(Dashboard,"COMMAND DECK","Live system telemetry  /  1.7.0")
+local Greeting=Label(Dashboard,"",25,Color3.fromRGB(88,238,208)); Greeting.Font=Enum.Font.Code; Greeting.TextSize=12
+local Hero=Card(Dashboard,92); Hero.BackgroundColor3=Color3.fromRGB(10,32,36); Stroke(Hero,Color3.fromRGB(69,222,193),.2)
+local HeroTag=Label(Hero,"NOXI  /  CONTROL INTERFACE",18,Color3.fromRGB(88,238,208)); HeroTag.Font=Enum.Font.Code; HeroTag.TextSize=10
+local HeroTitle=Label(Hero,"SYSTEMS ONLINE",30,Color3.fromRGB(244,250,255)); HeroTitle.Font=Enum.Font.GothamBlack; HeroTitle.TextSize=20
+local HeroSub=Label(Hero,"Performance • Visuals • Audio",18,Color3.fromRGB(142,178,187)); HeroSub.TextSize=10
+local MetricRow=New("Frame",{Size=UDim2.new(1,0,0,66),BackgroundTransparency=1},Dashboard)
+local function Metric(parent,x,titleText)
+ local box=New("Frame",{Size=UDim2.new(1/3,-6,1,0),Position=UDim2.new(x,0,0,0),BackgroundColor3=Color3.fromRGB(12,20,29)},parent); Corner(box,9); Stroke(box,Color3.fromRGB(53,86,100),.35)
+ local t=Label(box,titleText,17,Color3.fromRGB(117,165,174)); t.Position=UDim2.fromOffset(8,4); t.TextSize=9; t.Font=Enum.Font.Code
+ local value=Label(box,"--",26,Color3.fromRGB(242,249,252)); value.Position=UDim2.fromOffset(8,27); value.TextSize=17; value.Font=Enum.Font.GothamBlack
+ return value
+end
+local DashFPS=Metric(MetricRow,0,"FPS"); local DashPing=Metric(MetricRow,1/3,"PING"); local DashMemory=Metric(MetricRow,2/3,"MEMORY")
+local QuickCard=Card(Dashboard,100); Label(QuickCard,"QUICK LAUNCH",18,Color3.fromRGB(88,238,208)).Font=Enum.Font.Code
+local QB2=Button(QuickCard,"OPEN PERFORMANCE CENTER  →",function() OpenPage("Performance") end); QB2.Position=UDim2.new(0,0,0,35); QB2.Size=UDim2.new(1,0,0,34)
+local ActivityCard=Card(Dashboard,130); Label(ActivityCard,"EVENT STREAM",18,Color3.fromRGB(88,238,208)).Font=Enum.Font.Code; local ActivityText=Label(ActivityCard,"Waiting for events...",90,Color3.fromRGB(150,178,186)); ActivityText.Position=UDim2.fromOffset(12,32); ActivityText.Font=Enum.Font.Code; ActivityText.TextSize=10
 
-local PlayerPage=NewPage("Player"); Title(PlayerPage,"Player","Current player profile")
+local PlayerPage=NewPage("Player"); Title(PlayerPage,"PLAYER PROFILE","Local session identity")
 local PC=Card(PlayerPage,150); Label(PC,"PROFILE",20,Accent); Label(PC,"Username: "..Player.Name,24); Label(PC,"Display Name: "..Player.DisplayName,24); Label(PC,IsMainDeveloper and "👑 NOXI • MAIN DEVELOPER" or "PLAYER",28,IsMainDeveloper and Accent or Color3.fromRGB(160,160,170))
 
-local PerformancePage=NewPage("Performance"); Title(PerformancePage,"Performance 3.0","Live FPS, 1% low, ping and memory")
+local PerformancePage=NewPage("Performance"); Title(PerformancePage,"PERFORMANCE","Live telemetry  /  FPS • PING • MEMORY")
 local PerfCard=Card(PerformancePage,190); Label(PerfCard,"LIVE METRICS",20,Accent); local PerfInfo=Label(PerfCard,"Loading...",150); PerfInfo.Position=UDim2.fromOffset(12,38)
 local Prof=Card(PerformancePage,160); Label(Prof,"PROFILE",20,Accent)
 for i,name in ipairs({"Balanced","Performance","Ultra"}) do local b=Button(Prof,string.upper(name),function() State.PerformanceProfile=name; Notify("Performance profile: "..name) end); b.Position=UDim2.fromOffset(12,38+(i-1)*42) end
 
-local VisualsPage=NewPage("Visuals"); Title(VisualsPage,"Visuals 3.0","Visual Reconstruction • Low / Medium / Ultra")
+local VisualsPage=NewPage("Visuals"); Title(VisualsPage,"VISUAL LAB","Lighting and atmosphere controls")
 local VC=Card(VisualsPage,225); Label(VC,"VISUAL RECONSTRUCTION",22,Accent); Label(VC,"Lighting, atmosphere, bloom, depth and material response.",30,Color3.fromRGB(145,145,155))
 local VL=Button(VC,"LOW",function() ApplyVisualQuality("Low") end); VL.Position=UDim2.new(0,0,0,70); VL.Size=UDim2.new(.32,-5,0,44)
 local VM=Button(VC,"MEDIUM",function() ApplyVisualQuality("Medium") end); VM.Position=UDim2.new(.34,0,0,70); VM.Size=UDim2.new(.32,-5,0,44)
@@ -230,7 +242,7 @@ local VD=Button(VC,"DISABLE RECONSTRUCTION",DisableVisualReconstruction); VD.Pos
 local VS=Label(VC,"Current: MEDIUM • Reconstruction OFF",25,Accent); VS.Position=UDim2.fromOffset(0,165)
 
 
-local MusicPage=NewPage("Music"); Title(MusicPage,"Music Player","Track selector and volume")
+local MusicPage=NewPage("Music"); Title(MusicPage,"AUDIO DECK","Track selector and volume")
 local MusicCard=Card(MusicPage,220); Label(MusicCard,"NOW PLAYING",20,Accent)
 local MusicLabel=Label(MusicCard,"Choose a track",28); MusicLabel.Position=UDim2.fromOffset(12,32)
 local Music=SoundService:FindFirstChild("NoxiHubMusic") or New("Sound",{Name="NoxiHubMusic",Volume=State.MusicVolume,Looped=true},SoundService)
@@ -251,7 +263,7 @@ VolBar.InputBegan:Connect(function(i) if i.UserInputType==Enum.UserInputType.Mou
 UserInputService.InputChanged:Connect(function(i) if volDrag and (i.UserInputType==Enum.UserInputType.MouseMovement or i.UserInputType==Enum.UserInputType.Touch) then SetVol(i.Position.X) end end)
 UserInputService.InputEnded:Connect(function(i) if i.UserInputType==Enum.UserInputType.MouseButton1 or i.UserInputType==Enum.UserInputType.Touch then volDrag=false end end)
 
-local ConfigPage=NewPage("Config"); Title(ConfigPage,"Config Manager","JSON import and export")
+local ConfigPage=NewPage("Config"); Title(ConfigPage,"CONFIG VAULT","JSON import and export")
 local ConfigCard=Card(ConfigPage,310); Label(ConfigCard,"CONFIGURATION JSON",20,Accent)
 local ConfigBox=New("TextBox",{Size=UDim2.new(1,0,0,150),Position=UDim2.fromOffset(0,34),BackgroundColor3=Color3.fromRGB(5,5,8),TextColor3=Color3.fromRGB(220,220,230),PlaceholderText="Export settings or paste JSON here",Text="",TextSize=11,Font=Enum.Font.Code,TextXAlignment=Enum.TextXAlignment.Left,TextYAlignment=Enum.TextYAlignment.Top,ClearTextOnFocus=false,MultiLine=true},ConfigCard); Corner(ConfigBox,8); Padding(ConfigBox,8)
 local function ConfigData() return {version=VERSION,theme=State.Theme,visualReconstruction=State.VisualReconstruction,visualQuality=State.VisualQuality,notifications=State.Notifications,animations=State.Animations,amoled=State.AMOLED,performanceProfile=State.PerformanceProfile,musicVolume=State.MusicVolume,musicSoundId=State.MusicSoundId} end
@@ -294,7 +306,7 @@ for i,themeName in ipairs(ThemeNames) do
 end
 
 local WhatsNew=NewPage("What's New"); Title(WhatsNew,"What's New","NOXI'S HUB 1.7.0")
-local WC=Card(WhatsNew,245); Label(WC,"VERSION 1.7.0",22,Accent); local WT=Label(WC,"🏠 Dashboard 3.0\n⚡ Performance metrics\n🎨 Visual Reconstruction: Low / Medium / Ultra\n🛠 Developer diagnostics\n📱 Mobile scrolling preserved\n🖤 AMOLED appearance\n🪟 Minimize, restore and drag controls",190); WT.Position=UDim2.fromOffset(12,38)
+local WC=Card(WhatsNew,245); Label(WC,"VERSION 1.7.0  /  REDESIGN",22,Color3.fromRGB(88,238,208)); local WT=Label(WC,"▸ Command Deck dashboard\n▸ Live FPS / ping / memory tiles\n▸ New teal graphite interface\n▸ Mobile touch navigation\n▸ Music, themes and JSON config kept\n▸ Visual lab and diagnostics\n▸ Minimize, restore and drag controls",190); WT.Position=UDim2.fromOffset(12,38)
 
 --========================================================
 -- NAVIGATION / EVENTS
@@ -309,31 +321,19 @@ local function ApplyResponsiveLayout()
  local view=camera and camera.ViewportSize or Vector2.new(390,844)
  local mobile=view.X<600
  if mobile then
-  Sidebar.Size=UDim2.new(1,0,0,44)
-  Sidebar.Position=UDim2.fromOffset(0,0)
-  Sidebar.AutomaticCanvasSize=Enum.AutomaticSize.X
-  Sidebar.ScrollingDirection=Enum.ScrollingDirection.X
-  SidebarLayout.FillDirection=Enum.FillDirection.Horizontal
-  SidebarLayout.VerticalAlignment=Enum.VerticalAlignment.Center
-  SidebarLayout.HorizontalAlignment=Enum.HorizontalAlignment.Left
-  SidebarLayout.Padding=UDim.new(0,6)
-  for _,b in pairs(Nav) do b.Size=UDim2.fromOffset(104,34); b.TextSize=11 end
-  Content.Size=UDim2.new(1,0,1,-50)
-  Content.Position=UDim2.fromOffset(0,50)
-  Content.ScrollBarThickness=3
+  Sidebar.Size=UDim2.new(1,0,0,40); Sidebar.Position=UDim2.fromOffset(0,0)
+  Sidebar.AutomaticCanvasSize=Enum.AutomaticSize.X; Sidebar.ScrollingDirection=Enum.ScrollingDirection.X
+  SidebarLayout.FillDirection=Enum.FillDirection.Horizontal; SidebarLayout.VerticalAlignment=Enum.VerticalAlignment.Center
+  SidebarLayout.HorizontalAlignment=Enum.HorizontalAlignment.Left; SidebarLayout.Padding=UDim.new(0,5)
+  for _,b in pairs(Nav) do b.Size=UDim2.fromOffset(91,30); b.TextSize=10 end
+  Content.Size=UDim2.new(1,0,1,-46); Content.Position=UDim2.fromOffset(0,46); Content.ScrollBarThickness=2
  else
-  Sidebar.Size=UDim2.new(0,150,1,0)
-  Sidebar.Position=UDim2.fromOffset(0,0)
-  Sidebar.AutomaticCanvasSize=Enum.AutomaticSize.Y
-  Sidebar.ScrollingDirection=Enum.ScrollingDirection.Y
-  SidebarLayout.FillDirection=Enum.FillDirection.Vertical
-  SidebarLayout.VerticalAlignment=Enum.VerticalAlignment.Top
-  SidebarLayout.HorizontalAlignment=Enum.HorizontalAlignment.Left
-  SidebarLayout.Padding=UDim.new(0,5)
-  for _,b in pairs(Nav) do b.Size=UDim2.new(1,0,0,36); b.TextSize=12 end
-  Content.Size=UDim2.new(1,-160,1,0)
-  Content.Position=UDim2.fromOffset(160,0)
-  Content.ScrollBarThickness=4
+  Sidebar.Size=UDim2.new(0,116,1,0); Sidebar.Position=UDim2.fromOffset(0,0)
+  Sidebar.AutomaticCanvasSize=Enum.AutomaticSize.Y; Sidebar.ScrollingDirection=Enum.ScrollingDirection.Y
+  SidebarLayout.FillDirection=Enum.FillDirection.Vertical; SidebarLayout.VerticalAlignment=Enum.VerticalAlignment.Top
+  SidebarLayout.HorizontalAlignment=Enum.HorizontalAlignment.Left; SidebarLayout.Padding=UDim.new(0,5)
+  for _,b in pairs(Nav) do b.Size=UDim2.new(1,0,0,34); b.TextSize=10 end
+  Content.Size=UDim2.new(1,-126,1,0); Content.Position=UDim2.fromOffset(126,0); Content.ScrollBarThickness=3
  end
 end
 ApplyResponsiveLayout()
@@ -343,7 +343,7 @@ workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(function()
 end)
 OpenPage=function(name)
 	for n,p in pairs(Pages) do p.Visible=(n==name) end
-	for n,b in pairs(Nav) do b.BackgroundColor3=(n==name) and Accent or Color3.fromRGB(18,18,24); b.TextColor3=(n==name) and Color3.new(1,1,1) or Color3.fromRGB(190,190,200) end
+	for n,b in pairs(Nav) do b.BackgroundColor3=(n==name) and Color3.fromRGB(22,66,69) or Color3.fromRGB(18,27,36); b.TextColor3=(n==name) and Color3.fromRGB(103,255,215) or Color3.fromRGB(164,190,199) end
 	Content.CanvasPosition=Vector2.new(0,0)
 end
 
@@ -365,6 +365,7 @@ RunService.RenderStepped:Connect(function(dt)
 	end
 	local sorted=table.clone(FPSSamples); table.sort(sorted); local low=sorted[math.max(1,math.floor(#sorted*.01))] or CurrentFPS
 	SystemInfo.Text=string.format("FPS: %d     Ping: %d ms     Memory: %d MB\nPlayers: %d     Instances: %d     Parts: %d",CurrentFPS,CurrentPing,CurrentMemory,#Players:GetPlayers(),CurrentInstances,CurrentParts)
+	DashFPS.Text=tostring(CurrentFPS); DashPing.Text=tostring(CurrentPing).." ms"; DashMemory.Text=tostring(CurrentMemory).." MB"
 	PerfInfo.Text=string.format("FPS: %d\n1%% Low: %d\nPing: %d ms\nMemory: %d MB\nInstances: %d\nParts: %d",CurrentFPS,low,CurrentPing,CurrentMemory,CurrentInstances,CurrentParts)
 	UpdateLive()
 end)
@@ -373,7 +374,7 @@ end)
 -- MINIMIZE / DRAG / LOADING
 --========================================================
 
-local Restore=New("TextButton",{Size=UDim2.fromOffset(34,34),Position=UDim2.new(0,5,.5,-17),BackgroundColor3=Color3.fromRGB(8,8,12),Text="N",TextColor3=Accent,TextSize=15,Font=Enum.Font.GothamBlack,Visible=false,AutoButtonColor=false,ZIndex=80},Gui); Corner(Restore,10); Stroke(Restore,Accent,.25)
+local Restore=New("TextButton",{Size=UDim2.fromOffset(34,34),Position=UDim2.new(0,5,.5,-17),BackgroundColor3=Color3.fromRGB(8,18,24),Text="N",TextColor3=Color3.fromRGB(85,245,205),TextSize=15,Font=Enum.Font.GothamBlack,Visible=false,AutoButtonColor=false,ZIndex=80},Gui); Corner(Restore,9); Stroke(Restore,Color3.fromRGB(85,245,205),.25)
 Min.Activated:Connect(function() Main.Visible=false; Restore.Visible=true end)
 Restore.Activated:Connect(function() Main.Visible=true; Restore.Visible=false end)
 
