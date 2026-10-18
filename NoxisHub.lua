@@ -147,18 +147,21 @@ local LoadStatus=New("TextLabel",{Size=UDim2.new(1,-20,0,22),Position=UDim2.new(
 
 local Main=New("Frame",{Name="Main",AnchorPoint=Vector2.new(.5,.5),Position=UDim2.fromScale(.5,.5),Size=UDim2.fromOffset(570,360),BackgroundColor3=Color3.fromRGB(8,10,15),Visible=false,ClipsDescendants=true},Gui)
 Corner(Main,14); Stroke(Main,Color3.fromRGB(50,220,190),.18); New("UIGradient",{Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(13,24,31)),ColorSequenceKeypoint.new(.52,Color3.fromRGB(9,13,21)),ColorSequenceKeypoint.new(1,Color3.fromRGB(17,10,28))}),Rotation=28},Main)
-New("UISizeConstraint",{MinSize=Vector2.new(300,300),MaxSize=Vector2.new(570,420)},Main)
+-- No hard minimum size: narrow phones must never force the window outside the viewport.
+local WindowScale = New("UIScale",{Scale=1},Main)
 
--- Compact window: keep the UI centered and inside the viewport on phones and tablets.
+-- Fit the window to the usable viewport, including short landscape screens.
 local function UpdateWindowSize()
  local camera=workspace.CurrentCamera
  if not camera then return end
  local viewport=camera.ViewportSize
- local width=math.max(300,math.min(570,viewport.X-24))
- local height=math.max(300,math.min(420,viewport.Y-80,360))
+ local width=math.max(240,math.min(570,viewport.X-20))
+ local height=math.max(250,math.min(360,viewport.Y-64))
  Main.Size=UDim2.fromOffset(width,height)
  Main.AnchorPoint=Vector2.new(.5,.5)
  Main.Position=UDim2.fromScale(.5,.5)
+ -- Clamp scaling for very narrow / landscape viewports while preserving a readable minimum.
+ WindowScale.Scale=math.min(1, math.max(.72, (viewport.X-20)/570), math.max(.72, (viewport.Y-64)/360))
 end
 UpdateWindowSize()
 if workspace.CurrentCamera then workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(UpdateWindowSize) end
@@ -388,7 +391,15 @@ end)
 UserInputService.InputChanged:Connect(function(input)
 	if dragging and (input.UserInputType==Enum.UserInputType.MouseMovement or input.UserInputType==Enum.UserInputType.Touch) then
 		local d=input.Position-dragStart
-		Main.Position=UDim2.new(startPos.X.Scale,startPos.X.Offset+d.X,startPos.Y.Scale,startPos.Y.Offset+d.Y)
+		local camera=workspace.CurrentCamera
+		local viewport=camera and camera.ViewportSize or Vector2.new(390,844)
+		local absSize=Main.AbsoluteSize
+		local halfX=absSize.X/2
+		local halfY=absSize.Y/2
+		local x=math.clamp(startPos.X.Offset+d.X, -halfX+28, viewport.X-halfX-28)
+		local y=math.clamp(startPos.Y.Offset+d.Y, -halfY+28, viewport.Y-halfY-28)
+		Main.AnchorPoint=Vector2.new(.5,.5)
+		Main.Position=UDim2.fromOffset(viewport.X/2 + x, viewport.Y/2 + y)
 	end
 end)
 
