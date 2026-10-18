@@ -1,5 +1,5 @@
 --========================================================
--- NOXI'S HUB 1.7.0
+-- NOXI'S HUB 1.7.1-dev
 -- CYBERPUNK UI REFRESH | PERFORMANCE CENTER
 -- MUSIC + THEMES + CONFIG MANAGER | DEVELOPER EDITION
 -- LocalScript -> StarterPlayerScripts
@@ -17,7 +17,7 @@ local HttpService = game:GetService("HttpService")
 local Player = Players.LocalPlayer
 local PlayerGui = Player:WaitForChild("PlayerGui")
 
-local VERSION = "1.7.0"
+local VERSION = "1.7.1-dev"
 local DEVELOPER_USERNAME = "Gop_4797"
 local DEVELOPER_DISPLAY = "PAKETA"
 local IsMainDeveloper = Player.Name == DEVELOPER_USERNAME
@@ -171,7 +171,7 @@ end)
 local Header=New("Frame",{Size=UDim2.new(1,0,0,54),BackgroundColor3=Color3.fromRGB(10,18,25)},Main); Corner(Header,14); New("UIGradient",{Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(14,43,48)),ColorSequenceKeypoint.new(.65,Color3.fromRGB(12,20,31)),ColorSequenceKeypoint.new(1,Color3.fromRGB(28,15,39))}),Rotation=0},Header)
 New("Frame",{Size=UDim2.new(0,4,1,-16),Position=UDim2.fromOffset(10,8),BackgroundColor3=Color3.fromRGB(65,245,205),BorderSizePixel=0},Header)
 New("TextLabel",{Size=UDim2.new(1,-115,0,25),Position=UDim2.fromOffset(23,5),BackgroundTransparency=1,Text="NOXI'S HUB",TextColor3=Color3.fromRGB(244,250,255),TextSize=16,TextTruncate=Enum.TextTruncate.AtEnd,Font=Enum.Font.GothamBlack,TextXAlignment=Enum.TextXAlignment.Left},Header)
-New("TextLabel",{Size=UDim2.new(1,-115,0,16),Position=UDim2.fromOffset(24,30),BackgroundTransparency=1,Text="SYSTEM CONSOLE  /  1.7.0",TextColor3=Color3.fromRGB(90,224,200),TextSize=9,Font=Enum.Font.Code,TextXAlignment=Enum.TextXAlignment.Left},Header)
+New("TextLabel",{Size=UDim2.new(1,-115,0,16),Position=UDim2.fromOffset(24,30),BackgroundTransparency=1,Text="SYSTEM CONSOLE  /  1.7.1-dev",TextColor3=Color3.fromRGB(90,224,200),TextSize=9,Font=Enum.Font.Code,TextXAlignment=Enum.TextXAlignment.Left},Header)
 local Min=New("TextButton",{Size=UDim2.fromOffset(34,32),Position=UDim2.new(1,-42,0,11),BackgroundColor3=Color3.fromRGB(22,30,39),Text="—",TextColor3=Color3.fromRGB(220,240,245),TextSize=20,Font=Enum.Font.GothamBold,AutoButtonColor=false,Active=true,ZIndex=10},Header); Corner(Min,8); Stroke(Min,Color3.fromRGB(65,245,205),.55)
 local Body=New("Frame",{Size=UDim2.new(1,-20,1,-66),Position=UDim2.fromOffset(10,60),BackgroundTransparency=1},Main)
 local Sidebar=New("ScrollingFrame",{Size=UDim2.new(0,116,1,0),BackgroundColor3=Color3.fromRGB(11,17,25),BorderSizePixel=0,CanvasSize=UDim2.new(),AutomaticCanvasSize=Enum.AutomaticSize.Y,ScrollingDirection=Enum.ScrollingDirection.Y,ScrollBarThickness=2,Active=true},Body); Corner(Sidebar,10); Padding(Sidebar,5)
@@ -186,18 +186,32 @@ local function NewPage(name)
 	New("UIListLayout",{Padding=UDim.new(0,10),SortOrder=Enum.SortOrder.LayoutOrder},p); Pages[name]=p; return p
 end
 local function Title(parent,title,sub)
-	local f=New("Frame",{Size=UDim2.new(1,0,0,58),BackgroundTransparency=1},parent)
-	New("TextLabel",{Size=UDim2.new(1,0,0,32),BackgroundTransparency=1,Text=title,TextColor3=Color3.fromRGB(240,240,245),TextSize=23,Font=Enum.Font.GothamBlack,TextXAlignment=Enum.TextXAlignment.Left},f)
-	New("TextLabel",{Size=UDim2.new(1,0,0,20),Position=UDim2.fromOffset(0,32),BackgroundTransparency=1,Text=sub or "",TextColor3=Color3.fromRGB(130,130,140),TextSize=11,Font=Enum.Font.Gotham,TextXAlignment=Enum.TextXAlignment.Left},f)
+	local f=New("Frame",{Size=UDim2.new(1,0,0,62),BackgroundTransparency=1},parent)
+	New("Frame",{Size=UDim2.fromOffset(3,29),Position=UDim2.fromOffset(0,2),BackgroundColor3=Accent,BorderSizePixel=0},f)
+	New("TextLabel",{Size=UDim2.new(1,-14,0,32),Position=UDim2.fromOffset(12,0),BackgroundTransparency=1,Text=title,TextColor3=Color3.fromRGB(241,247,250),TextSize=22,Font=Enum.Font.GothamBlack,TextXAlignment=Enum.TextXAlignment.Left,TextTruncate=Enum.TextTruncate.AtEnd},f)
+	New("TextLabel",{Size=UDim2.new(1,-12,0,20),Position=UDim2.fromOffset(12,33),BackgroundTransparency=1,Text=sub or "",TextColor3=Color3.fromRGB(135,157,168),TextSize=10,Font=Enum.Font.Code,TextXAlignment=Enum.TextXAlignment.Left,TextTruncate=Enum.TextTruncate.AtEnd},f)
 end
 local function Card(parent,h)
-	local f=New("Frame",{Size=UDim2.new(1,0,0,h or 100),BackgroundColor3=Color3.fromRGB(13,21,29)},parent); Corner(f,11); Stroke(f,Color3.fromRGB(54,100,111),.42); New("UIGradient",{Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(18,31,40)),ColorSequenceKeypoint.new(1,Color3.fromRGB(11,15,23))}),Rotation=90},f); Padding(f,12); return f
+	local f=New("Frame",{Size=UDim2.new(1,0,0,h or 100),BackgroundColor3=Color3.fromRGB(13,21,29),BorderSizePixel=0},parent)
+	Corner(f,12)
+	Stroke(f,Color3.fromRGB(62,105,116),.32)
+	New("UIGradient",{Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(19,34,43)),ColorSequenceKeypoint.new(.55,Color3.fromRGB(13,22,31)),ColorSequenceKeypoint.new(1,Color3.fromRGB(10,15,23))}),Rotation=90},f)
+	New("Frame",{Size=UDim2.new(1,-24,0,1),Position=UDim2.fromOffset(12,24),BackgroundColor3=Color3.fromRGB(63,111,120),BackgroundTransparency=.65,BorderSizePixel=0},f)
+	Padding(f,12)
+	return f
 end
 local function Label(parent,text,h,color)
-	return New("TextLabel",{Size=UDim2.new(1,0,0,h or 25),BackgroundTransparency=1,Text=text,TextColor3=color or Color3.fromRGB(215,215,225),TextSize=13,Font=Enum.Font.GothamMedium,TextXAlignment=Enum.TextXAlignment.Left,TextYAlignment=Enum.TextYAlignment.Center},parent)
+	return New("TextLabel",{Size=UDim2.new(1,0,0,h or 25),BackgroundTransparency=1,Text=text,TextColor3=color or Color3.fromRGB(220,230,235),TextSize=13,Font=Enum.Font.GothamMedium,TextXAlignment=Enum.TextXAlignment.Left,TextYAlignment=Enum.TextYAlignment.Center,TextWrapped=false},parent)
 end
 local function Button(parent,text,callback,h)
-	local b=New("TextButton",{Size=UDim2.new(1,0,0,h or 38),BackgroundColor3=Color3.fromRGB(18,30,37),Text=text,TextColor3=Color3.fromRGB(222,244,245),TextSize=12,Font=Enum.Font.GothamBold,AutoButtonColor=false},parent); Corner(b,8); Stroke(b,Color3.fromRGB(57,117,126),.48); b.Activated:Connect(function() pcall(callback) end); return b
+	local b=New("TextButton",{Size=UDim2.new(1,0,0,h or 38),BackgroundColor3=Color3.fromRGB(19,32,40),Text=text,TextColor3=Color3.fromRGB(224,241,245),TextSize=12,Font=Enum.Font.GothamBold,AutoButtonColor=false,BorderSizePixel=0},parent)
+	Corner(b,9)
+	local outline=Stroke(b,Color3.fromRGB(63,119,128),.5)
+	New("UIGradient",{Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(23,43,49)),ColorSequenceKeypoint.new(1,Color3.fromRGB(15,24,33))}),Rotation=90},b)
+	b.MouseEnter:Connect(function() TweenService:Create(b,TweenInfo.new(.12),{BackgroundColor3=Color3.fromRGB(29,55,61)}):Play(); outline.Transparency=.15 end)
+	b.MouseLeave:Connect(function() TweenService:Create(b,TweenInfo.new(.12),{BackgroundColor3=Color3.fromRGB(19,32,40)}):Play(); outline.Transparency=.5 end)
+	b.Activated:Connect(function() pcall(callback) end)
+	return b
 end
 local function Toggle(parent,text,default,callback)
 	local enabled=default
@@ -210,7 +224,7 @@ end
 -- PAGES
 --========================================================
 
-local Dashboard=NewPage("Dashboard"); Title(Dashboard,"COMMAND DECK","Live system telemetry  /  1.7.0")
+local Dashboard=NewPage("Dashboard"); Title(Dashboard,"COMMAND DECK","Live system telemetry  /  1.7.1-dev")
 local Greeting=Label(Dashboard,"",25,Color3.fromRGB(88,238,208)); Greeting.Font=Enum.Font.Code; Greeting.TextSize=12
 local Hero=Card(Dashboard,92); Hero.BackgroundColor3=Color3.fromRGB(10,32,36); Stroke(Hero,Color3.fromRGB(69,222,193),.2)
 local HeroTag=Label(Hero,"NOXI  /  CONTROL INTERFACE",18,Color3.fromRGB(88,238,208)); HeroTag.Position=UDim2.fromOffset(0,0); HeroTag.Font=Enum.Font.Code; HeroTag.TextSize=10
@@ -313,7 +327,7 @@ for i,themeName in ipairs(ThemeNames) do
 end
 
 local WhatsNew=NewPage("What's New"); Title(WhatsNew,"What's New","NOXI'S HUB 1.7.0")
-local WC=Card(WhatsNew,245); Label(WC,"VERSION 1.7.0  /  REDESIGN",22,Color3.fromRGB(88,238,208)); local WT=Label(WC,"▸ Command Deck dashboard\n▸ Live FPS / ping / memory tiles\n▸ New teal graphite interface\n▸ Mobile touch navigation\n▸ Music, themes and JSON config kept\n▸ Visual lab and diagnostics\n▸ Minimize, restore and drag controls",190); WT.Position=UDim2.fromOffset(12,38)
+local WC=Card(WhatsNew,245); Label(WC,"VERSION 1.7.1-dev  /  COMMAND DECK",22,Color3.fromRGB(88,238,208)); local WT=Label(WC,"▸ Command Deck dashboard\n▸ Live FPS / ping / memory tiles\n▸ Refined graphite + teal interface\n▸ Clearer page hierarchy and card borders\n▸ Responsive mobile touch navigation\n▸ Music, themes and JSON config kept\n▸ Visual lab and diagnostics\n▸ Minimize, restore and drag controls",190); WT.Position=UDim2.fromOffset(12,38)
 
 --========================================================
 -- NAVIGATION / EVENTS
