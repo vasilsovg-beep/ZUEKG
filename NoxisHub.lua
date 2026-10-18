@@ -1,7 +1,7 @@
 --========================================================
--- NOXI'S HUB 1.3.0
--- DASHBOARD 3.0 | VISUAL RECONSTRUCTION 3.0
--- PERFORMANCE 3.0 | DEVELOPER EDITION
+-- NOXI'S HUB 1.7.0
+-- CYBERPUNK UI REFRESH | PERFORMANCE CENTER
+-- MUSIC + THEMES + CONFIG MANAGER | DEVELOPER EDITION
 -- LocalScript -> StarterPlayerScripts
 --========================================================
 
@@ -17,7 +17,7 @@ local HttpService = game:GetService("HttpService")
 local Player = Players.LocalPlayer
 local PlayerGui = Player:WaitForChild("PlayerGui")
 
-local VERSION = "1.7.0-dev"
+local VERSION = "1.7.0"
 local DEVELOPER_USERNAME = "Gop_4797"
 local DEVELOPER_DISPLAY = "PAKETA"
 local IsMainDeveloper = Player.Name == DEVELOPER_USERNAME
@@ -145,8 +145,8 @@ local BarBack=New("Frame",{Size=UDim2.new(1,-36,0,5),Position=UDim2.new(0,18,0,8
 local Bar=New("Frame",{Size=UDim2.new(0,0,1,0),BackgroundColor3=Accent,ZIndex=202},BarBack); Corner(Bar,5)
 local LoadStatus=New("TextLabel",{Size=UDim2.new(1,-20,0,22),Position=UDim2.new(0,10,0,96),BackgroundTransparency=1,Text="Starting...",TextColor3=Color3.fromRGB(145,145,155),TextSize=10,Font=Enum.Font.Gotham,ZIndex=201},Loading)
 
-local Main=New("Frame",{Name="Main",AnchorPoint=Vector2.new(.5,.5),Position=UDim2.fromScale(.5,.5),Size=UDim2.fromOffset(570,360),BackgroundColor3=Color3.fromRGB(7,7,10),Visible=false},Gui)
-Corner(Main,16); Stroke(Main,Color3.fromRGB(45,45,55),.15)
+local Main=New("Frame",{Name="Main",AnchorPoint=Vector2.new(.5,.5),Position=UDim2.fromScale(.5,.5),Size=UDim2.fromOffset(570,360),BackgroundColor3=Color3.fromRGB(10,8,18),Visible=false},Gui)
+Corner(Main,18); Stroke(Main,Color3.fromRGB(105,58,165),.12); New("UIGradient",{Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(15,10,27)),ColorSequenceKeypoint.new(1,Color3.fromRGB(7,8,14))}),Rotation=35},Main)
 New("UISizeConstraint",{MinSize=Vector2.new(300,300),MaxSize=Vector2.new(570,420)},Main)
 
 -- Compact window: keep the UI centered and inside the viewport on phones and tablets.
@@ -165,12 +165,12 @@ if workspace.CurrentCamera then workspace.CurrentCamera:GetPropertyChangedSignal
 workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(function()
  if workspace.CurrentCamera then workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(UpdateWindowSize); UpdateWindowSize() end
 end)
-local Header=New("Frame",{Size=UDim2.new(1,0,0,58),BackgroundColor3=Color3.fromRGB(10,10,14)},Main); Corner(Header,16)
-New("TextLabel",{Size=UDim2.new(1,-112,1,0),Position=UDim2.fromOffset(12,0),BackgroundTransparency=1,Text="NOXI'S HUB  •  1.7",TextColor3=Color3.fromRGB(240,240,245),TextSize=14,TextTruncate=Enum.TextTruncate.AtEnd,Font=Enum.Font.GothamBold,TextXAlignment=Enum.TextXAlignment.Left},Header)
+local Header=New("Frame",{Size=UDim2.new(1,0,0,58),BackgroundColor3=Color3.fromRGB(20,12,34)},Main); Corner(Header,16); New("UIGradient",{Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(34,17,54)),ColorSequenceKeypoint.new(1,Color3.fromRGB(11,12,22))}),Rotation=0},Header)
+New("TextLabel",{Size=UDim2.new(1,-112,1,0),Position=UDim2.fromOffset(12,0),BackgroundTransparency=1,Text="NOXI'S HUB  •  1.7.0",TextColor3=Color3.fromRGB(240,240,245),TextSize=14,TextTruncate=Enum.TextTruncate.AtEnd,Font=Enum.Font.GothamBold,TextXAlignment=Enum.TextXAlignment.Left},Header)
 New("TextLabel",{Size=UDim2.new(0,190,1,0),Position=UDim2.new(1,-245,0,0),BackgroundTransparency=1,Text=IsMainDeveloper and "👑 NOXI  •  DEV" or "DEVELOPER EDITION",TextColor3=Accent,TextSize=11,Font=Enum.Font.GothamBold,TextXAlignment=Enum.TextXAlignment.Right},Header)
 local Min=New("TextButton",{Size=UDim2.fromOffset(42,38),Position=UDim2.new(1,-48,0,10),BackgroundColor3=Color3.fromRGB(20,20,25),Text="—",TextColor3=Color3.fromRGB(220,220,225),TextSize=20,Font=Enum.Font.GothamBold,AutoButtonColor=false,Active=true,ZIndex=10},Header); Corner(Min,9)
 local Body=New("Frame",{Size=UDim2.new(1,-18,1,-68),Position=UDim2.fromOffset(9,62),BackgroundTransparency=1},Main)
-local Sidebar=New("ScrollingFrame",{Size=UDim2.new(0,150,1,0),BackgroundColor3=Color3.fromRGB(10,10,14),BorderSizePixel=0,CanvasSize=UDim2.new(),AutomaticCanvasSize=Enum.AutomaticSize.Y,ScrollingDirection=Enum.ScrollingDirection.Y,ScrollBarThickness=3,Active=true},Body); Corner(Sidebar,12); Padding(Sidebar,6)
+local Sidebar=New("ScrollingFrame",{Size=UDim2.new(0,150,1,0),BackgroundColor3=Color3.fromRGB(14,11,23),BorderSizePixel=0,CanvasSize=UDim2.new(),AutomaticCanvasSize=Enum.AutomaticSize.Y,ScrollingDirection=Enum.ScrollingDirection.Y,ScrollBarThickness=3,Active=true},Body); Corner(Sidebar,12); Padding(Sidebar,6)
 local SidebarLayout=New("UIListLayout",{Padding=UDim.new(0,5),SortOrder=Enum.SortOrder.LayoutOrder},Sidebar)
 local Content=New("ScrollingFrame",{Size=UDim2.new(1,-160,1,0),Position=UDim2.fromOffset(160,0),BackgroundTransparency=1,BorderSizePixel=0,CanvasSize=UDim2.new(),AutomaticCanvasSize=Enum.AutomaticSize.Y,ScrollingDirection=Enum.ScrollingDirection.Y,ScrollBarThickness=4,Active=true},Body); Padding(Content,4)
 local PageHolder=New("Frame",{Size=UDim2.new(1,0,0,0),AutomaticSize=Enum.AutomaticSize.Y,BackgroundTransparency=1},Content); New("UIListLayout",{Padding=UDim.new(0,10),SortOrder=Enum.SortOrder.LayoutOrder},PageHolder)
@@ -187,13 +187,13 @@ local function Title(parent,title,sub)
 	New("TextLabel",{Size=UDim2.new(1,0,0,20),Position=UDim2.fromOffset(0,32),BackgroundTransparency=1,Text=sub or "",TextColor3=Color3.fromRGB(130,130,140),TextSize=11,Font=Enum.Font.Gotham,TextXAlignment=Enum.TextXAlignment.Left},f)
 end
 local function Card(parent,h)
-	local f=New("Frame",{Size=UDim2.new(1,0,0,h or 100),BackgroundColor3=Color3.fromRGB(12,12,17)},parent); Corner(f,12); Stroke(f,Color3.fromRGB(40,40,50),.25); Padding(f,12); return f
+	local f=New("Frame",{Size=UDim2.new(1,0,0,h or 100),BackgroundColor3=Color3.fromRGB(16,13,25)},parent); Corner(f,14); Stroke(f,Color3.fromRGB(85,54,120),.32); New("UIGradient",{Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(23,17,36)),ColorSequenceKeypoint.new(1,Color3.fromRGB(12,12,20))}),Rotation=90},f); Padding(f,12); return f
 end
 local function Label(parent,text,h,color)
 	return New("TextLabel",{Size=UDim2.new(1,0,0,h or 25),BackgroundTransparency=1,Text=text,TextColor3=color or Color3.fromRGB(215,215,225),TextSize=13,Font=Enum.Font.GothamMedium,TextXAlignment=Enum.TextXAlignment.Left,TextYAlignment=Enum.TextYAlignment.Center},parent)
 end
 local function Button(parent,text,callback,h)
-	local b=New("TextButton",{Size=UDim2.new(1,0,0,h or 38),BackgroundColor3=Color3.fromRGB(18,18,24),Text=text,TextColor3=Color3.fromRGB(220,220,228),TextSize=12,Font=Enum.Font.GothamBold,AutoButtonColor=false},parent); Corner(b,9); Stroke(b,Color3.fromRGB(50,50,60),.35); b.Activated:Connect(function() pcall(callback) end); return b
+	local b=New("TextButton",{Size=UDim2.new(1,0,0,h or 38),BackgroundColor3=Color3.fromRGB(29,21,43),Text=text,TextColor3=Color3.fromRGB(239,232,250),TextSize=12,Font=Enum.Font.GothamBold,AutoButtonColor=false},parent); Corner(b,10); Stroke(b,Color3.fromRGB(105,69,142),.42); New("UIGradient",{Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(36,25,52)),ColorSequenceKeypoint.new(1,Color3.fromRGB(20,18,31))}),Rotation=90},b); b.Activated:Connect(function() pcall(callback) end); return b
 end
 local function Toggle(parent,text,default,callback)
 	local enabled=default
@@ -293,8 +293,8 @@ for i,themeName in ipairs(ThemeNames) do
  b.Position=UDim2.new(col*.25,0,0,194+row*34); b.Size=UDim2.new(.23,0,0,28)
 end
 
-local WhatsNew=NewPage("What's New"); Title(WhatsNew,"What's New","NOXI'S HUB 1.3.0")
-local WC=Card(WhatsNew,245); Label(WC,"1.3.0 RESTORE BASE",22,Accent); local WT=Label(WC,"🏠 Dashboard 3.0\n⚡ Performance metrics\n🎨 Visual Reconstruction: Low / Medium / Ultra\n🛠 Developer diagnostics\n📱 Mobile scrolling preserved\n🖤 AMOLED appearance\n🪟 Minimize, restore and drag controls",190); WT.Position=UDim2.fromOffset(12,38)
+local WhatsNew=NewPage("What's New"); Title(WhatsNew,"What's New","NOXI'S HUB 1.7.0")
+local WC=Card(WhatsNew,245); Label(WC,"VERSION 1.7.0",22,Accent); local WT=Label(WC,"🏠 Dashboard 3.0\n⚡ Performance metrics\n🎨 Visual Reconstruction: Low / Medium / Ultra\n🛠 Developer diagnostics\n📱 Mobile scrolling preserved\n🖤 AMOLED appearance\n🪟 Minimize, restore and drag controls",190); WT.Position=UDim2.fromOffset(12,38)
 
 --========================================================
 -- NAVIGATION / EVENTS
@@ -392,10 +392,10 @@ UserInputService.InputChanged:Connect(function(input)
 end)
 
 OpenPage("Dashboard")
--- Compact UI appears immediately; no full-screen loading cover.
+-- NOXI'S HUB 1.7.0: redesigned cyberpunk interface; compact UI appears immediately.
 Main.Visible=true
 Loading.Visible=false
 Log("NOXI HUB ready")
 Notify("NOXI HUB ready")
 
-print("[NOXI'S HUB] 1.3.0 loaded | NOXI / "..DEVELOPER_USERNAME.." ("..DEVELOPER_DISPLAY..")")
+print("[NOXI'S HUB] "..VERSION.." loaded | NOXI / "..DEVELOPER_USERNAME.." ("..DEVELOPER_DISPLAY..")")
