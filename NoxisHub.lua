@@ -155,8 +155,10 @@ local function UpdateWindowSize()
  if not camera then return end
  local viewport=camera.ViewportSize
  local width=math.max(300,math.min(570,viewport.X-24))
- local height=math.max(300,math.min(420,viewport.Y-40,360))
+ local height=math.max(300,math.min(420,viewport.Y-80,360))
  Main.Size=UDim2.fromOffset(width,height)
+ Main.AnchorPoint=Vector2.new(.5,.5)
+ Main.Position=UDim2.fromScale(.5,.5)
 end
 UpdateWindowSize()
 if workspace.CurrentCamera then workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(UpdateWindowSize) end
@@ -168,8 +170,8 @@ New("TextLabel",{Size=UDim2.new(1,-112,1,0),Position=UDim2.fromOffset(12,0),Back
 New("TextLabel",{Size=UDim2.new(0,190,1,0),Position=UDim2.new(1,-245,0,0),BackgroundTransparency=1,Text=IsMainDeveloper and "👑 NOXI  •  DEV" or "DEVELOPER EDITION",TextColor3=Accent,TextSize=11,Font=Enum.Font.GothamBold,TextXAlignment=Enum.TextXAlignment.Right},Header)
 local Min=New("TextButton",{Size=UDim2.fromOffset(42,38),Position=UDim2.new(1,-48,0,10),BackgroundColor3=Color3.fromRGB(20,20,25),Text="—",TextColor3=Color3.fromRGB(220,220,225),TextSize=20,Font=Enum.Font.GothamBold,AutoButtonColor=false,Active=true,ZIndex=10},Header); Corner(Min,9)
 local Body=New("Frame",{Size=UDim2.new(1,-18,1,-68),Position=UDim2.fromOffset(9,62),BackgroundTransparency=1},Main)
-local Sidebar=New("ScrollingFrame",{Size=UDim2.new(0,150,1,0),BackgroundColor3=Color3.fromRGB(10,10,14),BorderSizePixel=0,CanvasSize=UDim2.new(),AutomaticCanvasSize=Enum.AutomaticSize.Y,ScrollingDirection=Enum.ScrollingDirection.Y,ScrollBarThickness=3,Active=true},Body); Corner(Sidebar,12); Padding(Sidebar,8)
-New("UIListLayout",{Padding=UDim.new(0,5),SortOrder=Enum.SortOrder.LayoutOrder},Sidebar)
+local Sidebar=New("ScrollingFrame",{Size=UDim2.new(0,150,1,0),BackgroundColor3=Color3.fromRGB(10,10,14),BorderSizePixel=0,CanvasSize=UDim2.new(),AutomaticCanvasSize=Enum.AutomaticSize.Y,ScrollingDirection=Enum.ScrollingDirection.Y,ScrollBarThickness=3,Active=true},Body); Corner(Sidebar,12); Padding(Sidebar,6)
+local SidebarLayout=New("UIListLayout",{Padding=UDim.new(0,5),SortOrder=Enum.SortOrder.LayoutOrder},Sidebar)
 local Content=New("ScrollingFrame",{Size=UDim2.new(1,-160,1,0),Position=UDim2.fromOffset(160,0),BackgroundTransparency=1,BorderSizePixel=0,CanvasSize=UDim2.new(),AutomaticCanvasSize=Enum.AutomaticSize.Y,ScrollingDirection=Enum.ScrollingDirection.Y,ScrollBarThickness=4,Active=true},Body); Padding(Content,4)
 local PageHolder=New("Frame",{Size=UDim2.new(1,0,0,0),AutomaticSize=Enum.AutomaticSize.Y,BackgroundTransparency=1},Content); New("UIListLayout",{Padding=UDim.new(0,10),SortOrder=Enum.SortOrder.LayoutOrder},PageHolder)
 NotificationHolder=New("Frame",{Size=UDim2.new(0,250,0,0),AutomaticSize=Enum.AutomaticSize.Y,Position=UDim2.new(1,-265,0,68),BackgroundTransparency=1,ZIndex=100},Gui); New("UIListLayout",{Padding=UDim.new(0,6),HorizontalAlignment=Enum.HorizontalAlignment.Right},NotificationHolder)
@@ -300,6 +302,45 @@ local WC=Card(WhatsNew,245); Label(WC,"1.3.0 RESTORE BASE",22,Accent); local WT=
 
 local order={"Dashboard","Player","Performance","Music","Config","Visuals","Server","Debug","Settings","What's New"}
 for i,name in ipairs(order) do local b=Button(Sidebar,name,function() OpenPage(name) end,36); b.LayoutOrder=i; Nav[name]=b end
+
+-- Responsive layout: desktop uses a side rail; phones use a horizontal touch navigation strip.
+local function ApplyResponsiveLayout()
+ local camera=workspace.CurrentCamera
+ local view=camera and camera.ViewportSize or Vector2.new(390,844)
+ local mobile=view.X<600
+ if mobile then
+  Sidebar.Size=UDim2.new(1,0,0,44)
+  Sidebar.Position=UDim2.fromOffset(0,0)
+  Sidebar.AutomaticCanvasSize=Enum.AutomaticSize.X
+  Sidebar.ScrollingDirection=Enum.ScrollingDirection.X
+  SidebarLayout.FillDirection=Enum.FillDirection.Horizontal
+  SidebarLayout.VerticalAlignment=Enum.VerticalAlignment.Center
+  SidebarLayout.HorizontalAlignment=Enum.HorizontalAlignment.Left
+  SidebarLayout.Padding=UDim.new(0,6)
+  for _,b in pairs(Nav) do b.Size=UDim2.fromOffset(104,34); b.TextSize=11 end
+  Content.Size=UDim2.new(1,0,1,-50)
+  Content.Position=UDim2.fromOffset(0,50)
+  Content.ScrollBarThickness=3
+ else
+  Sidebar.Size=UDim2.new(0,150,1,0)
+  Sidebar.Position=UDim2.fromOffset(0,0)
+  Sidebar.AutomaticCanvasSize=Enum.AutomaticSize.Y
+  Sidebar.ScrollingDirection=Enum.ScrollingDirection.Y
+  SidebarLayout.FillDirection=Enum.FillDirection.Vertical
+  SidebarLayout.VerticalAlignment=Enum.VerticalAlignment.Top
+  SidebarLayout.HorizontalAlignment=Enum.HorizontalAlignment.Left
+  SidebarLayout.Padding=UDim.new(0,5)
+  for _,b in pairs(Nav) do b.Size=UDim2.new(1,0,0,36); b.TextSize=12 end
+  Content.Size=UDim2.new(1,-160,1,0)
+  Content.Position=UDim2.fromOffset(160,0)
+  Content.ScrollBarThickness=4
+ end
+end
+ApplyResponsiveLayout()
+if workspace.CurrentCamera then workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(ApplyResponsiveLayout) end
+workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(function()
+ if workspace.CurrentCamera then workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(ApplyResponsiveLayout); ApplyResponsiveLayout() end
+end)
 OpenPage=function(name)
 	for n,p in pairs(Pages) do p.Visible=(n==name) end
 	for n,b in pairs(Nav) do b.BackgroundColor3=(n==name) and Accent or Color3.fromRGB(18,18,24); b.TextColor3=(n==name) and Color3.new(1,1,1) or Color3.fromRGB(190,190,200) end
