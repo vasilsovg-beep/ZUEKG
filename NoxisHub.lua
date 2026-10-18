@@ -140,7 +140,7 @@ end
 
 local Loading=New("Frame",{Size=UDim2.fromScale(1,1),BackgroundColor3=Color3.fromRGB(2,2,4),ZIndex=200},Gui)
 local LoadTitle=New("TextLabel",{Size=UDim2.new(1,0,0,55),Position=UDim2.new(0,0,.40,0),BackgroundTransparency=1,Text="NOXI'S HUB",TextColor3=Accent,TextSize=34,Font=Enum.Font.GothamBlack,ZIndex=201},Loading)
-local LoadSub=New("TextLabel",{Size=UDim2.new(1,0,0,30),Position=UDim2.new(0,0,.49,0),BackgroundTransparency=1,Text="1.3.0  •  PERFORMANCE & VISUALS",TextColor3=Color3.fromRGB(180,180,190),TextSize=13,Font=Enum.Font.GothamMedium,ZIndex=201},Loading)
+local LoadSub=New("TextLabel",{Size=UDim2.new(1,0,0,30),Position=UDim2.new(0,0,.49,0),BackgroundTransparency=1,Text=VERSION.."  •  PERFORMANCE & CONFIG",TextColor3=Color3.fromRGB(180,180,190),TextSize=13,Font=Enum.Font.GothamMedium,ZIndex=201},Loading)
 local BarBack=New("Frame",{Size=UDim2.new(0,300,0,5),Position=UDim2.new(.5,-150,.55,0),BackgroundColor3=Color3.fromRGB(25,25,30),ZIndex=201},Loading); Corner(BarBack,5)
 local Bar=New("Frame",{Size=UDim2.new(0,0,1,0),BackgroundColor3=Accent,ZIndex=202},BarBack); Corner(Bar,5)
 local LoadStatus=New("TextLabel",{Size=UDim2.new(1,0,0,25),Position=UDim2.new(0,0,.58,0),BackgroundTransparency=1,Text="Starting...",TextColor3=Color3.fromRGB(145,145,155),TextSize=12,Font=Enum.Font.Gotham,ZIndex=201},Loading)
@@ -258,10 +258,23 @@ local DC=Card(DebugPage,130); Label(DC,"DEBUG TOOLS",20,Accent); local DT=Toggle
 local DB=Button(DC,"REFRESH DIAGNOSTICS",function() Log("Diagnostics refreshed"); Notify("Diagnostics refreshed") end); DB.Position=UDim2.fromOffset(12,80)
 
 local SettingsPage=NewPage("Settings"); Title(SettingsPage,"Settings","Noxi's Hub preferences")
-local SetC=Card(SettingsPage,175); Label(SetC,"GENERAL",20,Accent)
+local SetC=Card(SettingsPage,310); Label(SetC,"GENERAL",20,Accent)
 local NT=Toggle(SetC,"Notifications",true,function(v) State.Notifications=v end); NT.Position=UDim2.fromOffset(12,38)
 local AT=Toggle(SetC,"Animations",true,function(v) State.Animations=v end); AT.Position=UDim2.fromOffset(12,80)
 local AO=Toggle(SetC,"AMOLED",false,function(v) State.AMOLED=v; Main.BackgroundColor3=v and Color3.fromRGB(0,0,0) or Color3.fromRGB(7,7,10) end); AO.Position=UDim2.fromOffset(12,122)
+Label(SetC,"ACCENT THEME",22,Accent).Position=UDim2.fromOffset(0,164)
+local ThemeNames={"Purple","Blue","Pink","Cyan","Red","Green","Orange"}
+for i,themeName in ipairs(ThemeNames) do
+ local b=Button(SetC,themeName,function()
+  State.Theme=themeName; Accent=Themes[themeName]; VolFill.BackgroundColor3=Accent
+  for _,obj in ipairs(Gui:GetDescendants()) do
+   if obj:IsA("TextLabel") and (obj.TextColor3==Themes.Purple or obj.TextColor3==Themes.Blue or obj.TextColor3==Themes.Pink or obj.TextColor3==Themes.Cyan or obj.TextColor3==Themes.Red or obj.TextColor3==Themes.Green or obj.TextColor3==Themes.Orange) then obj.TextColor3=Accent end
+  end
+  Log("Theme changed: "..themeName); Notify("Theme: "..themeName)
+ end,30)
+ local col=(i-1)%4; local row=math.floor((i-1)/4)
+ b.Position=UDim2.new(col*.25,0,0,194+row*34); b.Size=UDim2.new(.23,0,0,28)
+end
 
 local WhatsNew=NewPage("What's New"); Title(WhatsNew,"What's New","NOXI'S HUB 1.3.0")
 local WC=Card(WhatsNew,245); Label(WC,"1.3.0 RESTORE BASE",22,Accent); local WT=Label(WC,"🏠 Dashboard 3.0\n⚡ Performance metrics\n🎨 Visual Reconstruction: Low / Medium / Ultra\n🛠 Developer diagnostics\n📱 Mobile scrolling preserved\n🖤 AMOLED appearance\n🪟 Minimize, restore and drag controls",190); WT.Position=UDim2.fromOffset(12,38)
