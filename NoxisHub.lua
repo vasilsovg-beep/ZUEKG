@@ -11,11 +11,13 @@ local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 local Lighting = game:GetService("Lighting")
 local Stats = game:GetService("Stats")
+local SoundService = game:GetService("SoundService")
+local HttpService = game:GetService("HttpService")
 
 local Player = Players.LocalPlayer
 local PlayerGui = Player:WaitForChild("PlayerGui")
 
-local VERSION = "1.3.0"
+local VERSION = "1.7.0-dev"
 local DEVELOPER_USERNAME = "Gop_4797"
 local DEVELOPER_DISPLAY = "PAKETA"
 local IsMainDeveloper = Player.Name == DEVELOPER_USERNAME
@@ -29,6 +31,8 @@ local State = {
 	AMOLED = false,
 	Debug = false,
 	PerformanceProfile = "Balanced",
+ MusicVolume = 0.5,
+ MusicSoundId = "94919056430713",
 }
 
 local Themes = {
@@ -45,6 +49,7 @@ local SavedMaterials = {}
 local FPSSamples = {}
 local CurrentFPS, CurrentPing, CurrentMemory = 0,0,0
 local CurrentInstances, CurrentParts = 0,0
+local LastCount = 0
 local OriginalLighting = {}
 
 local function SafeDestroy(x)
@@ -207,6 +212,44 @@ local VU=Button(VC,"🔥  ULTRA",function() ApplyVisualQuality("Ultra") end); VU
 local VD=Button(VC,"DISABLE RECONSTRUCTION",DisableVisualReconstruction); VD.Position=UDim2.new(0,0,0,122)
 local VS=Label(VC,"Current: MEDIUM • Reconstruction OFF",25,Accent); VS.Position=UDim2.fromOffset(0,165)
 
+
+local MusicPage=NewPage("Music"); Title(MusicPage,"Music Player","Track selector and volume")
+local MusicCard=Card(MusicPage,220); Label(MusicCard,"NOW PLAYING",20,Accent)
+local MusicLabel=Label(MusicCard,"Choose a track",28); MusicLabel.Position=UDim2.fromOffset(12,32)
+local Music=SoundService:FindFirstChild("NoxiHubMusic") or New("Sound",{Name="NoxiHubMusic",Volume=State.MusicVolume,Looped=true},SoundService)
+local Tracks={{Name="Track 1",Id="94919056430713"},{Name="Track 2",Id="102616343336371"},{Name="Track 3",Id="71681070025173"}}
+local TrackIndex=1
+local function PlayTrack(i) TrackIndex=((i-1)%#Tracks)+1; local t=Tracks[TrackIndex]; State.MusicSoundId=t.Id; Music:Stop(); Music.SoundId="rbxassetid://"..t.Id; Music.Volume=State.MusicVolume; MusicLabel.Text=t.Name.." • "..t.Id; pcall(function() Music:Play() end) end
+local Prev=Button(MusicCard,"◀ PREVIOUS",function() PlayTrack(TrackIndex-1) end); Prev.Position=UDim2.new(0,0,0,68); Prev.Size=UDim2.new(.32,-5,0,38)
+local Play=Button(MusicCard,"▶ PLAY / PAUSE",function() if Music.IsPlaying then Music:Pause() else if Music.SoundId=="" then PlayTrack(TrackIndex) else pcall(function() Music:Resume() end) end end end); Play.Position=UDim2.new(.34,0,0,68); Play.Size=UDim2.new(.32,-5,0,38)
+local Next=Button(MusicCard,"NEXT ▶",function() PlayTrack(TrackIndex+1) end); Next.Position=UDim2.new(.68,0,0,68); Next.Size=UDim2.new(.32,0,0,38)
+local Stop=Button(MusicCard,"■ STOP",function() Music:Stop() end); Stop.Position=UDim2.new(0,0,0,112)
+local VolLabel=Label(MusicCard,"Volume: 50%",24,Accent); VolLabel.Position=UDim2.fromOffset(0,154)
+local VolBar=New("TextButton",{Size=UDim2.new(1,0,0,12),Position=UDim2.fromOffset(0,184),BackgroundColor3=Color3.fromRGB(35,35,45),Text=""},MusicCard); Corner(VolBar,6)
+local VolFill=New("Frame",{Size=UDim2.new(State.MusicVolume,0,1,0),BackgroundColor3=Accent},VolBar); Corner(VolFill,6)
+local function SetVol(x) State.MusicVolume=math.clamp((x-VolBar.AbsolutePosition.X)/math.max(1,VolBar.AbsoluteSize.X),0,1); Music.Volume=State.MusicVolume; VolFill.Size=UDim2.new(State.MusicVolume,0,1,0); VolLabel.Text="Volume: "..math.floor(State.MusicVolume*100).."%" end
+VolBar.Activated:Connect(function() SetVol(UserInputService:GetMouseLocation().X) end)
+local volDrag=false
+VolBar.InputBegan:Connect(function(i) if i.UserInputType==Enum.UserInputType.MouseButton1 or i.UserInputType==Enum.UserInputType.Touch then volDrag=true; SetVol(i.Position.X) end end)
+UserInputService.InputChanged:Connect(function(i) if volDrag and (i.UserInputType==Enum.UserInputType.MouseMovement or i.UserInputType==Enum.UserInputType.Touch) then SetVol(i.Position.X) end end)
+UserInputService.InputEnded:Connect(function(i) if i.UserInputType==Enum.UserInputType.MouseButton1 or i.UserInputType==Enum.UserInputType.Touch then volDrag=false end end)
+
+local ConfigPage=NewPage("Config"); Title(ConfigPage,"Config Manager","JSON import and export")
+local ConfigCard=Card(ConfigPage,310); Label(ConfigCard,"CONFIGURATION JSON",20,Accent)
+local ConfigBox=New("TextBox",{Size=UDim2.new(1,0,0,150),Position=UDim2.fromOffset(0,34),BackgroundColor3=Color3.fromRGB(5,5,8),TextColor3=Color3.fromRGB(220,220,230),PlaceholderText="Export settings or paste JSON here",Text="",TextSize=11,Font=Enum.Font.Code,TextXAlignment=Enum.TextXAlignment.Left,TextYAlignment=Enum.TextYAlignment.Top,ClearTextOnFocus=false,MultiLine=true},ConfigCard); Corner(ConfigBox,8); Padding(ConfigBox,8)
+local function ConfigData() return {version=VERSION,theme=State.Theme,visualReconstruction=State.VisualReconstruction,visualQuality=State.VisualQuality,notifications=State.Notifications,animations=State.Animations,amoled=State.AMOLED,performanceProfile=State.PerformanceProfile,musicVolume=State.MusicVolume,musicSoundId=State.MusicSoundId} end
+local Export=Button(ConfigCard,"EXPORT JSON",function() local ok,out=pcall(function() return HttpService:JSONEncode(ConfigData()) end); if ok then ConfigBox.Text=out; Notify("JSON exported") else Notify("Export failed") end end); Export.Position=UDim2.new(0,0,0,194)
+local Import=Button(ConfigCard,"IMPORT JSON",function() local ok,c=pcall(function() return HttpService:JSONDecode(ConfigBox.Text) end); if not ok or type(c)~="table" then Notify("Invalid JSON"); return end
+ if type(c.notifications)=="boolean" then State.Notifications=c.notifications end
+ if type(c.animations)=="boolean" then State.Animations=c.animations end
+ if type(c.amoled)=="boolean" then State.AMOLED=c.amoled; Main.BackgroundColor3=c.amoled and Color3.new(0,0,0) or Color3.fromRGB(7,7,10) end
+ if type(c.musicVolume)=="number" then State.MusicVolume=math.clamp(c.musicVolume,0,1); Music.Volume=State.MusicVolume; VolFill.Size=UDim2.new(State.MusicVolume,0,1,0); VolLabel.Text="Volume: "..math.floor(State.MusicVolume*100).."%" end
+ if type(c.visualQuality)=="string" and VisualSettings[c.visualQuality] then State.VisualQuality=c.visualQuality end
+ if c.visualReconstruction==true then ApplyVisualQuality(State.VisualQuality) elseif c.visualReconstruction==false and State.VisualReconstruction then DisableVisualReconstruction() end
+ Notify("Config imported"); Log("Config imported")
+end); Import.Position=UDim2.new(0,0,0,238)
+local Note=Label(ConfigCard,"Copy exported JSON somewhere safe to keep it; import applies supported settings.",34,Color3.fromRGB(145,145,155)); Note.Position=UDim2.fromOffset(0,278)
+
 local ServerPage=NewPage("Server"); Title(ServerPage,"Server","Live server information")
 local SC=Card(ServerPage,145); Label(SC,"SERVER",20,Accent); local SI=Label(SC,"Players: --\nJobId: "..game.JobId.."\nPlaceId: "..tostring(game.PlaceId),100); SI.Position=UDim2.fromOffset(12,38)
 
@@ -227,7 +270,7 @@ local WC=Card(WhatsNew,245); Label(WC,"1.3.0 RESTORE BASE",22,Accent); local WT=
 -- NAVIGATION / EVENTS
 --========================================================
 
-local order={"Dashboard","Player","Performance","Visuals","Server","Debug","Settings","What's New"}
+local order={"Dashboard","Player","Performance","Music","Config","Visuals","Server","Debug","Settings","What's New"}
 for i,name in ipairs(order) do local b=Button(Sidebar,name,function() OpenPage(name) end,36); b.LayoutOrder=i; Nav[name]=b end
 OpenPage=function(name)
 	for n,p in pairs(Pages) do p.Visible=(n==name) end
@@ -281,7 +324,7 @@ end)
 
 OpenPage("Dashboard")
 task.spawn(function()
-	local steps={"Initializing core","Loading Dashboard 3.0","Preparing Performance 3.0","Preparing Visual Reconstruction 3.0","Preparing diagnostics","Finalizing interface"}
+	local steps={"Initializing core","Loading Dashboard 2.0","Preparing Performance Center","Initializing Music Player","Preparing JSON Config Manager","Preparing diagnostics","Finalizing interface"}
 	for i,s in ipairs(steps) do
 		LoadStatus.Text=s
 		TweenService:Create(Bar,TweenInfo.new(.22),{Size=UDim2.new(i/#steps,0,1,0)}):Play()
