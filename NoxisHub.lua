@@ -213,9 +213,9 @@ end
 local Dashboard=NewPage("Dashboard"); Title(Dashboard,"COMMAND DECK","Live system telemetry  /  1.7.0")
 local Greeting=Label(Dashboard,"",25,Color3.fromRGB(88,238,208)); Greeting.Font=Enum.Font.Code; Greeting.TextSize=12
 local Hero=Card(Dashboard,92); Hero.BackgroundColor3=Color3.fromRGB(10,32,36); Stroke(Hero,Color3.fromRGB(69,222,193),.2)
-local HeroTag=Label(Hero,"NOXI  /  CONTROL INTERFACE",18,Color3.fromRGB(88,238,208)); HeroTag.Font=Enum.Font.Code; HeroTag.TextSize=10
-local HeroTitle=Label(Hero,"SYSTEMS ONLINE",30,Color3.fromRGB(244,250,255)); HeroTitle.Font=Enum.Font.GothamBlack; HeroTitle.TextSize=20
-local HeroSub=Label(Hero,"Performance • Visuals • Audio",18,Color3.fromRGB(142,178,187)); HeroSub.TextSize=10
+local HeroTag=Label(Hero,"NOXI  /  CONTROL INTERFACE",18,Color3.fromRGB(88,238,208)); HeroTag.Position=UDim2.fromOffset(0,0); HeroTag.Font=Enum.Font.Code; HeroTag.TextSize=10
+local HeroTitle=Label(Hero,"SYSTEMS ONLINE",30,Color3.fromRGB(244,250,255)); HeroTitle.Position=UDim2.fromOffset(0,20); HeroTitle.Font=Enum.Font.GothamBlack; HeroTitle.TextSize=20
+local HeroSub=Label(Hero,"Performance • Visuals • Audio",18,Color3.fromRGB(142,178,187)); HeroSub.Position=UDim2.fromOffset(0,54); HeroSub.TextSize=10
 local MetricRow=New("Frame",{Size=UDim2.new(1,0,0,66),BackgroundTransparency=1},Dashboard)
 local function Metric(parent,x,titleText)
  local box=New("Frame",{Size=UDim2.new(1/3,-6,1,0),Position=UDim2.new(x,0,0,0),BackgroundColor3=Color3.fromRGB(12,20,29)},parent); Corner(box,9); Stroke(box,Color3.fromRGB(53,86,100),.35)
@@ -229,7 +229,10 @@ local QB2=Button(QuickCard,"OPEN PERFORMANCE CENTER  →",function() OpenPage("P
 local ActivityCard=Card(Dashboard,130); Label(ActivityCard,"EVENT STREAM",18,Color3.fromRGB(88,238,208)).Font=Enum.Font.Code; local ActivityText=Label(ActivityCard,"Waiting for events...",90,Color3.fromRGB(150,178,186)); ActivityText.Position=UDim2.fromOffset(12,32); ActivityText.Font=Enum.Font.Code; ActivityText.TextSize=10
 
 local PlayerPage=NewPage("Player"); Title(PlayerPage,"PLAYER PROFILE","Local session identity")
-local PC=Card(PlayerPage,150); Label(PC,"PROFILE",20,Accent); Label(PC,"Username: "..Player.Name,24); Label(PC,"Display Name: "..Player.DisplayName,24); Label(PC,IsMainDeveloper and "👑 NOXI • MAIN DEVELOPER" or "PLAYER",28,IsMainDeveloper and Accent or Color3.fromRGB(160,160,170))
+local PC=Card(PlayerPage,150); local PCTitle=Label(PC,"PROFILE",20,Accent); PCTitle.Position=UDim2.fromOffset(0,0)
+local PCUser=Label(PC,"Username: "..Player.Name,24); PCUser.Position=UDim2.fromOffset(0,28)
+local PCDisplay=Label(PC,"Display Name: "..Player.DisplayName,24); PCDisplay.Position=UDim2.fromOffset(0,54)
+local PCRole=Label(PC,IsMainDeveloper and "👑 NOXI • MAIN DEVELOPER" or "PLAYER",28,IsMainDeveloper and Accent or Color3.fromRGB(160,160,170)); PCRole.Position=UDim2.fromOffset(0,82)
 
 local PerformancePage=NewPage("Performance"); Title(PerformancePage,"PERFORMANCE","Live telemetry  /  FPS • PING • MEMORY")
 local PerfCard=Card(PerformancePage,190); Label(PerfCard,"LIVE METRICS",20,Accent); local PerfInfo=Label(PerfCard,"Loading...",150); PerfInfo.Position=UDim2.fromOffset(12,38)
@@ -237,7 +240,8 @@ local Prof=Card(PerformancePage,160); Label(Prof,"PROFILE",20,Accent)
 for i,name in ipairs({"Balanced","Performance","Ultra"}) do local b=Button(Prof,string.upper(name),function() State.PerformanceProfile=name; Notify("Performance profile: "..name) end); b.Position=UDim2.fromOffset(12,38+(i-1)*42) end
 
 local VisualsPage=NewPage("Visuals"); Title(VisualsPage,"VISUAL LAB","Lighting and atmosphere controls")
-local VC=Card(VisualsPage,225); Label(VC,"VISUAL RECONSTRUCTION",22,Accent); Label(VC,"Lighting, atmosphere, bloom, depth and material response.",30,Color3.fromRGB(145,145,155))
+local VC=Card(VisualsPage,225); local VCTitle=Label(VC,"VISUAL RECONSTRUCTION",22,Accent); VCTitle.Position=UDim2.fromOffset(0,0)
+local VCSub=Label(VC,"Lighting, atmosphere, bloom, depth and material response.",30,Color3.fromRGB(145,145,155)); VCSub.Position=UDim2.fromOffset(0,26); VCSub.TextWrapped=true
 local VL=Button(VC,"LOW",function() ApplyVisualQuality("Low") end); VL.Position=UDim2.new(0,0,0,70); VL.Size=UDim2.new(.32,-5,0,44)
 local VM=Button(VC,"MEDIUM",function() ApplyVisualQuality("Medium") end); VM.Position=UDim2.new(.34,0,0,70); VM.Size=UDim2.new(.32,-5,0,44)
 local VU=Button(VC,"🔥  ULTRA",function() ApplyVisualQuality("Ultra") end); VU.Position=UDim2.new(.68,0,0,70); VU.Size=UDim2.new(.32,0,0,44)
