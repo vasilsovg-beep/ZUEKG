@@ -92,13 +92,12 @@ local Gui = New("ScreenGui",{Name="NoxisHub",ResetOnSpawn=false,IgnoreGuiInset=t
 ApplyLanguage = function()
  local dictionary=Translations[Language] or {}
  for _,obj in ipairs(Gui:GetDescendants()) do
-  if obj:IsA("TextLabel") or obj:IsA("TextButton") or obj:IsA("TextBox") then
+  if obj:IsA("TextLabel") or obj:IsA("TextButton") then
    local original=obj:GetAttribute("NoxiOriginalText")
    if original~=nil then obj.Text=dictionary[original] or original end
-   if obj:IsA("TextBox") then
-    local placeholder=obj:GetAttribute("NoxiOriginalPlaceholder")
-    if placeholder~=nil then obj.PlaceholderText=dictionary[placeholder] or placeholder end
-   end
+  elseif obj:IsA("TextBox") then
+   local placeholder=obj:GetAttribute("NoxiOriginalPlaceholder")
+   if placeholder~=nil then obj.PlaceholderText=dictionary[placeholder] or placeholder end
   end
  end
 end
