@@ -42,11 +42,11 @@ local Language = "English"
 local Translations = {
  Russian = {
   ["Dashboard"]="Главная",["Player"]="Игрок",["Performance"]="Производительность",["Music"]="Музыка",["Config"]="Конфигурация",["Visuals"]="Графика",["Server"]="Сервер",["Debug"]="Диагностика",["Settings"]="Настройки",["What's New"]="Что нового",
-  ["COMMAND DECK"]="КОМАНДНЫЙ ЦЕНТР",["SYSTEMS ONLINE"]="СИСТЕМЫ АКТИВНЫ",["QUICK LAUNCH"]="БЫСТРЫЙ ЗАПУСК",["OPEN PERFORMANCE CENTER  →"]="ОТКРЫТЬ МОНИТОРИНГ →",["EVENT STREAM"]="ЛЕНТА СОБЫТИЙ",["Waiting for events..."]="Ожидание событий...",["PLAYER PROFILE"]="ПРОФИЛЬ ИГРОКА",["Local session identity"]="Данные текущей сессии",["PROFILE"]="ПРОФИЛЬ",["Username: "]="Имя пользователя: ",["Display Name: "]="Отображаемое имя: ",["LIVE METRICS"]="ТЕКУЩИЕ ПОКАЗАТЕЛИ",["VISUAL LAB"]="НАСТРОЙКИ ГРАФИКИ",["VISUAL RECONSTRUCTION"]="УЛУЧШЕНИЕ ГРАФИКИ",["DISABLE RECONSTRUCTION"]="ОТКЛЮЧИТЬ УЛУЧШЕНИЕ",["AUDIO DECK"]="АУДИОПАНЕЛЬ",["NOW PLAYING"]="СЕЙЧАС ИГРАЕТ",["Choose a track"]="Выберите трек",["Track 1"]="Трек 1",["Track 2"]="Трек 2",["Track 3"]="Трек 3",["◀ PREVIOUS"]="◀ ПРЕДЫДУЩИЙ",["▶ PLAY / PAUSE"]="▶ ПУСК / ПАУЗА",["NEXT ▶"]="СЛЕДУЮЩИЙ ▶",["■ STOP"]="■ СТОП",["Volume: 50%"]="Громкость: 50%",["CONFIG VAULT"]="КОНФИГУРАЦИЯ",["JSON import and export"]="Импорт и экспорт JSON",["CONFIGURATION JSON"]="КОНФИГУРАЦИЯ JSON",["EXPORT JSON"]="ЭКСПОРТ JSON",["IMPORT JSON"]="ИМПОРТ JSON",["SERVER"]="СЕРВЕР",["DEBUG TOOLS"]="ИНСТРУМЕНТЫ ДИАГНОСТИКИ",["Debug Logging"]="Журнал отладки",["REFRESH DIAGNOSTICS"]="ОБНОВИТЬ ДИАГНОСТИКУ",["GENERAL"]="ОБЩИЕ",["Notifications"]="Уведомления",["Animations"]="Анимации",["ACCENT THEME"]="ЦВЕТ ТЕМЫ",["LANGUAGE"]="ЯЗЫК",["Choose interface language"]="Выберите язык интерфейса",["GOOD DAY ☀️"]="ДОБРОГО ДНЯ ☀️",["GOOD NIGHT 🌙"]="ДОБРОЙ НОЧИ 🌙",["No events yet."]="Событий пока нет.",["NOXI HUB ready"]="NOXI HUB готов",["Starting..."]="Запуск...",["Export failed"]="Ошибка экспорта",["Invalid JSON"]="Некорректный JSON",["Config imported"]="Конфигурация импортирована",["Diagnostics refreshed"]="Диагностика обновлена"
+  ["COMMAND DECK"]="КОМАНДНЫЙ ЦЕНТР",["SYSTEMS ONLINE"]="СИСТЕМЫ АКТИВНЫ",["QUICK LAUNCH"]="БЫСТРЫЙ ЗАПУСК",["OPEN PERFORMANCE CENTER  →"]="ОТКРЫТЬ МОНИТОРИНГ →",["EVENT STREAM"]="ЛЕНТА СОБЫТИЙ",["Waiting for events..."]="Ожидание событий...",["PLAYER PROFILE"]="ПРОФИЛЬ ИГРОКА",["Local session identity"]="Данные текущей сессии",["PROFILE"]="ПРОФИЛЬ",["Username: "]="Имя пользователя: ",["Display Name: "]="Отображаемое имя: ",["LIVE METRICS"]="ТЕКУЩИЕ ПОКАЗАТЕЛИ",["VISUAL LAB"]="НАСТРОЙКИ ГРАФИКИ",["VISUAL RECONSTRUCTION"]="УЛУЧШЕНИЕ ГРАФИКИ",["DISABLE RECONSTRUCTION"]="ОТКЛЮЧИТЬ УЛУЧШЕНИЕ",["LOW"]="НИЗКО",["MEDIUM"]="СРЕДНЕ",["ULTRA"]="УЛЬТРА",["Current: "]="Текущий уровень: ",["Reconstruction ON"]="Улучшение ВКЛ.",["Reconstruction OFF"]="Улучшение ВЫКЛ.",["Players: "]="Игроки: ",["Visual mode: "]="Режим графики: ",["Performance profile: "]="Профиль производительности: ",["AUDIO DECK"]="АУДИОПАНЕЛЬ",["NOW PLAYING"]="СЕЙЧАС ИГРАЕТ",["Choose a track"]="Выберите трек",["Track 1"]="Трек 1",["Track 2"]="Трек 2",["Track 3"]="Трек 3",["◀ PREVIOUS"]="◀ ПРЕДЫДУЩИЙ",["▶ PLAY / PAUSE"]="▶ ПУСК / ПАУЗА",["NEXT ▶"]="СЛЕДУЮЩИЙ ▶",["■ STOP"]="■ СТОП",["Volume: 50%"]="Громкость: 50%",["CONFIG VAULT"]="КОНФИГУРАЦИЯ",["JSON import and export"]="Импорт и экспорт JSON",["CONFIGURATION JSON"]="КОНФИГУРАЦИЯ JSON",["EXPORT JSON"]="ЭКСПОРТ JSON",["IMPORT JSON"]="ИМПОРТ JSON",["SERVER"]="СЕРВЕР",["DEBUG TOOLS"]="ИНСТРУМЕНТЫ ДИАГНОСТИКИ",["Debug Logging"]="Журнал отладки",["REFRESH DIAGNOSTICS"]="ОБНОВИТЬ ДИАГНОСТИКУ",["GENERAL"]="ОБЩИЕ",["Notifications"]="Уведомления",["Animations"]="Анимации",["ACCENT THEME"]="ЦВЕТ ТЕМЫ",["LANGUAGE"]="ЯЗЫК",["Choose interface language"]="Выберите язык интерфейса",["GOOD DAY ☀️"]="ДОБРОГО ДНЯ ☀️",["GOOD NIGHT 🌙"]="ДОБРОЙ НОЧИ 🌙",["No events yet."]="Событий пока нет.",["NOXI HUB ready"]="NOXI HUB готов",["Starting..."]="Запуск...",["Export failed"]="Ошибка экспорта",["Invalid JSON"]="Некорректный JSON",["Config imported"]="Конфигурация импортирована",["Diagnostics refreshed"]="Диагностика обновлена"
  },
  Polish = {
   ["Dashboard"]="Panel",["Player"]="Gracz",["Performance"]="Wydajność",["Music"]="Muzyka",["Config"]="Konfiguracja",["Visuals"]="Grafika",["Server"]="Serwer",["Debug"]="Diagnostyka",["Settings"]="Ustawienia",["What's New"]="Co nowego",
-  ["COMMAND DECK"]="CENTRUM STEROWANIA",["SYSTEMS ONLINE"]="SYSTEMY AKTYWNE",["QUICK LAUNCH"]="SZYBKI START",["OPEN PERFORMANCE CENTER  →"]="OTWÓRZ MONITOR WYDAJNOŚCI →",["EVENT STREAM"]="STRUMIEŃ ZDARZEŃ",["Waiting for events..."]="Oczekiwanie na zdarzenia...",["PLAYER PROFILE"]="PROFIL GRACZA",["Local session identity"]="Dane bieżącej sesji",["PROFILE"]="PROFIL",["Username: "]="Nazwa użytkownika: ",["Display Name: "]="Nazwa wyświetlana: ",["LIVE METRICS"]="BIEŻĄCE WSKAŹNIKI",["VISUAL LAB"]="USTAWIENIA GRAFIKI",["VISUAL RECONSTRUCTION"]="ULEPSZENIE GRAFIKI",["DISABLE RECONSTRUCTION"]="WYŁĄCZ ULEPSZENIE",["AUDIO DECK"]="PANEL AUDIO",["NOW PLAYING"]="TERAZ ODTWARZANE",["Choose a track"]="Wybierz utwór",["Track 1"]="Utwór 1",["Track 2"]="Utwór 2",["Track 3"]="Utwór 3",["◀ PREVIOUS"]="◀ POPRZEDNI",["▶ PLAY / PAUSE"]="▶ ODTWÓRZ / PAUZA",["NEXT ▶"]="NASTĘPNY ▶",["■ STOP"]="■ STOP",["Volume: 50%"]="Głośność: 50%",["CONFIG VAULT"]="KONFIGURACJA",["JSON import and export"]="Import i eksport JSON",["CONFIGURATION JSON"]="KONFIGURACJA JSON",["EXPORT JSON"]="EKSPORTUJ JSON",["IMPORT JSON"]="IMPORTUJ JSON",["SERVER"]="SERWER",["DEBUG TOOLS"]="NARZĘDZIA DIAGNOSTYCZNE",["Debug Logging"]="Dziennik debugowania",["REFRESH DIAGNOSTICS"]="ODŚWIEŻ DIAGNOSTYKĘ",["GENERAL"]="OGÓLNE",["Notifications"]="Powiadomienia",["Animations"]="Animacje",["ACCENT THEME"]="KOLOR AKCENTU",["LANGUAGE"]="JĘZYK",["Choose interface language"]="Wybierz język interfejsu",["GOOD DAY ☀️"]="DZIEŃ DOBRY ☀️",["GOOD NIGHT 🌙"]="DOBREJ NOCY 🌙",["No events yet."]="Brak zdarzeń.",["NOXI HUB ready"]="NOXI HUB gotowy",["Starting..."]="Uruchamianie...",["Export failed"]="Błąd eksportu",["Invalid JSON"]="Nieprawidłowy JSON",["Config imported"]="Zaimportowano konfigurację",["Diagnostics refreshed"]="Odświeżono diagnostykę"
+  ["COMMAND DECK"]="CENTRUM STEROWANIA",["SYSTEMS ONLINE"]="SYSTEMY AKTYWNE",["QUICK LAUNCH"]="SZYBKI START",["OPEN PERFORMANCE CENTER  →"]="OTWÓRZ MONITOR WYDAJNOŚCI →",["EVENT STREAM"]="STRUMIEŃ ZDARZEŃ",["Waiting for events..."]="Oczekiwanie na zdarzenia...",["PLAYER PROFILE"]="PROFIL GRACZA",["Local session identity"]="Dane bieżącej sesji",["PROFILE"]="PROFIL",["Username: "]="Nazwa użytkownika: ",["Display Name: "]="Nazwa wyświetlana: ",["LIVE METRICS"]="BIEŻĄCE WSKAŹNIKI",["VISUAL LAB"]="USTAWIENIA GRAFIKI",["VISUAL RECONSTRUCTION"]="ULEPSZENIE GRAFIKI",["DISABLE RECONSTRUCTION"]="WYŁĄCZ ULEPSZENIE",["LOW"]="NISKO",["MEDIUM"]="ŚREDNIO",["ULTRA"]="ULTRA",["Current: "]="Obecnie: ",["Reconstruction ON"]="Ulepszenie WŁ.",["Reconstruction OFF"]="Ulepszenie WYŁ.",["Players: "]="Gracze: ",["Visual mode: "]="Tryb grafiki: ",["Performance profile: "]="Profil wydajności: ",["AUDIO DECK"]="PANEL AUDIO",["NOW PLAYING"]="TERAZ ODTWARZANE",["Choose a track"]="Wybierz utwór",["Track 1"]="Utwór 1",["Track 2"]="Utwór 2",["Track 3"]="Utwór 3",["◀ PREVIOUS"]="◀ POPRZEDNI",["▶ PLAY / PAUSE"]="▶ ODTWÓRZ / PAUZA",["NEXT ▶"]="NASTĘPNY ▶",["■ STOP"]="■ STOP",["Volume: 50%"]="Głośność: 50%",["CONFIG VAULT"]="KONFIGURACJA",["JSON import and export"]="Import i eksport JSON",["CONFIGURATION JSON"]="KONFIGURACJA JSON",["EXPORT JSON"]="EKSPORTUJ JSON",["IMPORT JSON"]="IMPORTUJ JSON",["SERVER"]="SERWER",["DEBUG TOOLS"]="NARZĘDZIA DIAGNOSTYCZNE",["Debug Logging"]="Dziennik debugowania",["REFRESH DIAGNOSTICS"]="ODŚWIEŻ DIAGNOSTYKĘ",["GENERAL"]="OGÓLNE",["Notifications"]="Powiadomienia",["Animations"]="Animacje",["ACCENT THEME"]="KOLOR AKCENTU",["LANGUAGE"]="JĘZYK",["Choose interface language"]="Wybierz język interfejsu",["GOOD DAY ☀️"]="DZIEŃ DOBRY ☀️",["GOOD NIGHT 🌙"]="DOBREJ NOCY 🌙",["No events yet."]="Brak zdarzeń.",["NOXI HUB ready"]="NOXI HUB gotowy",["Starting..."]="Uruchamianie...",["Export failed"]="Błąd eksportu",["Invalid JSON"]="Nieprawidłowy JSON",["Config imported"]="Zaimportowano konfigurację",["Diagnostics refreshed"]="Odświeżono diagnostykę"
  }
 }
 local ApplyLanguage
@@ -164,7 +164,7 @@ local function DisableVisualReconstruction()
 		Lighting.Brightness=OriginalLighting.Brightness; Lighting.GlobalShadows=OriginalLighting.GlobalShadows
 		Lighting.EnvironmentDiffuseScale=OriginalLighting.Diffuse; Lighting.EnvironmentSpecularScale=OriginalLighting.Specular
 	end
-	Notify("Visual Reconstruction disabled")
+	Notify(Translate("Visual Reconstruction disabled"))
 end
 
 --========================================================
@@ -284,7 +284,7 @@ local PCRole=Label(PC,IsMainDeveloper and "👑 NOXI • MAIN DEVELOPER" or "PLA
 local PerformancePage=NewPage("Performance"); Title(PerformancePage,"PERFORMANCE","Live telemetry  /  FPS • PING • MEMORY")
 local PerfCard=Card(PerformancePage,190); Label(PerfCard,"LIVE METRICS",20,Accent); local PerfInfo=Label(PerfCard,"Loading...",150); PerfInfo.Position=UDim2.fromOffset(12,38)
 local Prof=Card(PerformancePage,160); Label(Prof,"PROFILE",20,Accent)
-for i,name in ipairs({"Balanced","Performance","Ultra"}) do local b=Button(Prof,string.upper(name),function() State.PerformanceProfile=name; Notify("Performance profile: "..name) end); b.Position=UDim2.fromOffset(12,38+(i-1)*42) end
+for i,name in ipairs({"Balanced","Performance","Ultra"}) do local b=Button(Prof,string.upper(name),function() State.PerformanceProfile=name; Notify(Translate("Performance profile: ")..Translate(name)) end); b.Position=UDim2.fromOffset(12,38+(i-1)*42) end
 
 local VisualsPage=NewPage("Visuals"); Title(VisualsPage,"VISUAL LAB","Lighting and atmosphere controls")
 local VC=Card(VisualsPage,225); local VCTitle=Label(VC,"VISUAL RECONSTRUCTION",22,Accent); VCTitle.Position=UDim2.fromOffset(0,0)
@@ -310,7 +310,7 @@ local Stop=Button(MusicCard,"■ STOP",function() Music:Stop() end); Stop.Positi
 local VolLabel=Label(MusicCard,"Volume: 50%",24,Accent); VolLabel.Position=UDim2.fromOffset(0,154)
 local VolBar=New("TextButton",{Size=UDim2.new(1,0,0,12),Position=UDim2.fromOffset(0,184),BackgroundColor3=Color3.fromRGB(35,35,45),Text=""},MusicCard); Corner(VolBar,6)
 local VolFill=New("Frame",{Size=UDim2.new(State.MusicVolume,0,1,0),BackgroundColor3=Accent},VolBar); Corner(VolFill,6)
-local function SetVol(x) State.MusicVolume=math.clamp((x-VolBar.AbsolutePosition.X)/math.max(1,VolBar.AbsoluteSize.X),0,1); Music.Volume=State.MusicVolume; VolFill.Size=UDim2.new(State.MusicVolume,0,1,0); VolLabel.Text="Volume: "..math.floor(State.MusicVolume*100).."%" end
+local function SetVol(x) State.MusicVolume=math.clamp((x-VolBar.AbsolutePosition.X)/math.max(1,VolBar.AbsoluteSize.X),0,1); Music.Volume=State.MusicVolume; VolFill.Size=UDim2.new(State.MusicVolume,0,1,0); VolLabel.Text=Translate("Volume: 50%"):gsub("50", tostring(math.floor(State.MusicVolume*100))) end
 VolBar.Activated:Connect(function() SetVol(UserInputService:GetMouseLocation().X) end)
 local volDrag=false
 VolBar.InputBegan:Connect(function(i) if i.UserInputType==Enum.UserInputType.MouseButton1 or i.UserInputType==Enum.UserInputType.Touch then volDrag=true; SetVol(i.Position.X) end end)
@@ -321,16 +321,16 @@ local ConfigPage=NewPage("Config"); Title(ConfigPage,"CONFIG VAULT","JSON import
 local ConfigCard=Card(ConfigPage,310); Label(ConfigCard,"CONFIGURATION JSON",20,Accent)
 local ConfigBox=New("TextBox",{Size=UDim2.new(1,0,0,150),Position=UDim2.fromOffset(0,34),BackgroundColor3=Color3.fromRGB(5,5,8),TextColor3=Color3.fromRGB(220,220,230),PlaceholderText="Export settings or paste JSON here",Text="",TextSize=11,Font=Enum.Font.Code,TextXAlignment=Enum.TextXAlignment.Left,TextYAlignment=Enum.TextYAlignment.Top,ClearTextOnFocus=false,MultiLine=true},ConfigCard); Corner(ConfigBox,8); Padding(ConfigBox,8)
 local function ConfigData() return {version=VERSION,language=Language,theme=State.Theme,visualReconstruction=State.VisualReconstruction,visualQuality=State.VisualQuality,notifications=State.Notifications,animations=State.Animations,amoled=State.AMOLED,performanceProfile=State.PerformanceProfile,musicVolume=State.MusicVolume,musicSoundId=State.MusicSoundId} end
-local Export=Button(ConfigCard,"EXPORT JSON",function() local ok,out=pcall(function() return HttpService:JSONEncode(ConfigData()) end); if ok then ConfigBox.Text=out; Notify("JSON exported") else Notify("Export failed") end end); Export.Position=UDim2.new(0,0,0,194)
-local Import=Button(ConfigCard,"IMPORT JSON",function() local ok,c=pcall(function() return HttpService:JSONDecode(ConfigBox.Text) end); if not ok or type(c)~="table" then Notify("Invalid JSON"); return end
+local Export=Button(ConfigCard,"EXPORT JSON",function() local ok,out=pcall(function() return HttpService:JSONEncode(ConfigData()) end); if ok then ConfigBox.Text=out; Notify(Translate("JSON exported")) else Notify(Translate("Export failed")) end end); Export.Position=UDim2.new(0,0,0,194)
+local Import=Button(ConfigCard,"IMPORT JSON",function() local ok,c=pcall(function() return HttpService:JSONDecode(ConfigBox.Text) end); if not ok or type(c)~="table" then Notify(Translate("Invalid JSON")); return end
  if type(c.language)=="string" and (c.language=="English" or c.language=="Russian" or c.language=="Polish") then Language=c.language; State.Language=Language; if ApplyLanguage then ApplyLanguage() end end
   if type(c.notifications)=="boolean" then State.Notifications=c.notifications end
  if type(c.animations)=="boolean" then State.Animations=c.animations end
  if type(c.amoled)=="boolean" then State.AMOLED=c.amoled; Main.BackgroundColor3=c.amoled and Color3.new(0,0,0) or Color3.fromRGB(7,7,10) end
- if type(c.musicVolume)=="number" then State.MusicVolume=math.clamp(c.musicVolume,0,1); Music.Volume=State.MusicVolume; VolFill.Size=UDim2.new(State.MusicVolume,0,1,0); VolLabel.Text="Volume: "..math.floor(State.MusicVolume*100).."%" end
+ if type(c.musicVolume)=="number" then State.MusicVolume=math.clamp(c.musicVolume,0,1); Music.Volume=State.MusicVolume; VolFill.Size=UDim2.new(State.MusicVolume,0,1,0); VolLabel.Text=Translate("Volume: 50%"):gsub("50", tostring(math.floor(State.MusicVolume*100))) end
  if type(c.visualQuality)=="string" and VisualSettings[c.visualQuality] then State.VisualQuality=c.visualQuality end
  if c.visualReconstruction==true then ApplyVisualQuality(State.VisualQuality) elseif c.visualReconstruction==false and State.VisualReconstruction then DisableVisualReconstruction() end
- Notify("Config imported"); Log("Config imported")
+ Notify(Translate("Config imported")); Log("Config imported")
 end); Import.Position=UDim2.new(0,0,0,238)
 local Note=Label(ConfigCard,"Copy exported JSON somewhere safe to keep it; import applies supported settings.",34,Color3.fromRGB(145,145,155)); Note.Position=UDim2.fromOffset(0,278)
 
@@ -339,7 +339,7 @@ local SC=Card(ServerPage,145); Label(SC,"SERVER",20,Accent); local SI=Label(SC,"
 
 local DebugPage=NewPage("Debug"); Title(DebugPage,"Debug","Developer diagnostics")
 local DC=Card(DebugPage,130); Label(DC,"DEBUG TOOLS",20,Accent); local DT=Toggle(DC,"Debug Logging",false,function(v) State.Debug=v end); DT.Position=UDim2.fromOffset(12,38)
-local DB=Button(DC,"REFRESH DIAGNOSTICS",function() Log("Diagnostics refreshed"); Notify("Diagnostics refreshed") end); DB.Position=UDim2.fromOffset(12,80)
+local DB=Button(DC,"REFRESH DIAGNOSTICS",function() Log("Diagnostics refreshed"); Notify(Translate("Diagnostics refreshed")) end); DB.Position=UDim2.fromOffset(12,80)
 
 local SettingsPage=NewPage("Settings"); Title(SettingsPage,"Settings","Noxi's Hub preferences")
 local SetC=Card(SettingsPage,310); Label(SetC,"GENERAL",20,Accent)
@@ -376,7 +376,7 @@ for i,langName in ipairs(LanguageOptions) do
  b.Position=UDim2.new((i-1)/3,0,0,55); b.Size=UDim2.new(1/3,-6,0,30)
 end
 
-local WhatsNew=NewPage("What's New"); Title(WhatsNew,"What's New","NOXI'S HUB 1.7.0")
+local WhatsNew=NewPage("What's New"); Title(WhatsNew,"What's New","NOXI'S HUB 1.7.5-dev")
 local WC=Card(WhatsNew,245); Label(WC,"VERSION 1.7.5-dev  /  COMMAND DECK",22,Color3.fromRGB(88,238,208)); local WT=Label(WC,"▸ Command Deck dashboard\n▸ Live FPS / ping / memory tiles\n▸ Refined graphite + teal interface\n▸ Clearer page hierarchy and card borders\n▸ Responsive mobile touch navigation\n▸ Music, themes and JSON config kept\n▸ Visual lab and diagnostics\n▸ Minimize, restore and drag controls",190); WT.Position=UDim2.fromOffset(12,38)
 
 --========================================================
@@ -421,7 +421,7 @@ end
 local function UpdateLive()
 	local act={}; for i=1,math.min(#Activity,6) do act[i]=Activity[i] end; ActivityText.Text=#act>0 and table.concat(act,"\n") or Translate("No events yet.")
 	local hour=tonumber(os.date("%H")) or 12; Greeting.Text=Translate((hour>=6 and hour<18) and "GOOD DAY ☀️" or "GOOD NIGHT 🌙")
-	VS.Text="Current: "..string.upper(State.VisualQuality)..(State.VisualReconstruction and " • Reconstruction ON" or " • Reconstruction OFF")
+	VS.Text=Translate("Current: ")..Translate(string.upper(State.VisualQuality))..(State.VisualReconstruction and " • "..Translate("Reconstruction ON") or " • "..Translate("Reconstruction OFF"))
 	SI.Text=Translate("Players: ")..#Players:GetPlayers().."\nJobId: "..game.JobId.."\nPlaceId: "..tostring(game.PlaceId)
 end
 
@@ -472,7 +472,7 @@ UserInputService.InputChanged:Connect(function(input)
 end)
 
 OpenPage("Dashboard")
--- NOXI'S HUB 1.7.0: redesigned cyberpunk interface; compact UI appears immediately.
+-- NOXI'S HUB 1.7.5-dev: localization draft; compact UI appears immediately.
 Main.Visible=true
 Loading.Visible=false
 if ApplyLanguage then ApplyLanguage() end
