@@ -191,6 +191,8 @@ end
 -- PAGES
 --========================================================
 
+local ApplyPlayerESP
+local UpdateLive
 local Dashboard=NewPage("Dashboard"); Title(Dashboard,"Dashboard 3.0","Live developer overview")
 local Greeting=Label(Dashboard,"",28,Accent)
 local SystemCard=Card(Dashboard,120); Label(SystemCard,"SYSTEM STATUS",20,Accent); local SystemInfo=Label(SystemCard,"Loading...",70); SystemInfo.Position=UDim2.fromOffset(12,35)
@@ -285,7 +287,6 @@ OpenPage=function(name)
 	Content.CanvasPosition=Vector2.new(0,0)
 end
 
-local ApplyPlayerESP
 ApplyPlayerESP = function()
 	for _,h in pairs(PlayerHighlights) do SafeDestroy(h) end
 	PlayerHighlights={}
@@ -300,7 +301,7 @@ end
 Players.PlayerAdded:Connect(function(p) p.CharacterAdded:Connect(function() task.wait(1); ApplyPlayerESP() end) end)
 Players.PlayerRemoving:Connect(function(p) SafeDestroy(PlayerHighlights[p]); PlayerHighlights[p]=nil end)
 
-local function UpdateLive()
+UpdateLive = function()
 	LiveInfo.Text=string.format("FPS: %d   •   Ping: %d ms\nMemory: %d MB   •   Players: %d",CurrentFPS,CurrentPing,CurrentMemory,#Players:GetPlayers())
 	local act={}; for i=1,math.min(#Activity,6) do act[i]=Activity[i] end; ActivityText.Text=#act>0 and table.concat(act,"\n") or "No events yet."
 	local hour=tonumber(os.date("%H")) or 12; Greeting.Text=(hour>=6 and hour<18) and "GOOD DAY ☀️" or "GOOD NIGHT 🌙"
